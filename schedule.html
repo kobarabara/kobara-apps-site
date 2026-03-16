@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kobara Schedule | How to use</title>
+  <meta name="description" content="Kobara Schedule の使い方を紹介します。イベント作成、候補日設定、共有、投票、日程確定、出欠確認、ICSカレンダー出力までの流れを確認できます。">
+  <style>
+    :root{
+      --bg:#f6f1ea;
+      --surface:#fbf8f4;
+      --surface-strong:#f1e8dc;
+      --line:#d8cdbc;
+      --text:#183b6b;
+      --text-soft:#52657f;
+      --accent:#1d4b82;
+      --accent-2:#9d7a45;
+      --shadow:0 10px 30px rgba(24,59,107,0.08);
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:12px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right,rgba(157,122,69,0.10),transparent 24%),
+        radial-gradient(circle at left center,rgba(29,75,130,0.06),transparent 22%),
+        var(--bg);
+      line-height:1.75;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(calc(100% - 32px),var(--max));
+      margin:0 auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(10px);
+      background:rgba(246,241,234,0.9);
+      border-bottom:1px solid var(--line);
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:72px;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent),#2d639f);
+      color:#fff;
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+
+    .brand-text small{
+      display:block;
+      font-size:.8rem;
+      color:var(--text-soft);
+    }
+
+    .nav{
+      display:flex;
+      gap:18px;
+      font-weight:700;
+      color:var(--text-soft);
+      flex-wrap:wrap;
+    }
+
+    .nav a:hover{color:var(--accent)}
+
+    .hero{padding:60px 0 28px}
+
+    .hero-box,
+    .card,
+    .step-card{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-box{padding:42px}
+
+    .eyebrow{
+      display:inline-block;
+      padding:7px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    h1{
+      font-size:clamp(2.1rem,4.8vw,3.3rem);
+      margin:18px 0 12px;
+      letter-spacing:-.02em;
+      line-height:1.15;
+    }
+
+    .hero-subtitle{
+      font-size:clamp(1.05rem,2vw,1.28rem);
+      font-weight:800;
+      color:var(--accent);
+      margin:0 0 18px;
+    }
+
+    .lead{
+      color:var(--text-soft);
+      font-size:1.06rem;
+      max-width:48em;
+      margin:0;
+    }
+
+    .hero-actions{
+      margin-top:26px;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 22px;
+      border-radius:999px;
+      font-weight:800;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .btn-primary:hover{background:#163a65}
+
+    .btn-secondary{
+      background:#fff;
+      border:1px solid var(--line);
+      color:var(--accent);
+    }
+
+    section{padding:20px 0 34px}
+
+    .section-head{
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      margin:0 0 8px;
+      font-size:clamp(1.55rem,3vw,2rem);
+      line-height:1.2;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--text-soft);
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .card{
+      padding:28px;
+    }
+
+    .feature-list{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .feature-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      font-weight:700;
+    }
+
+    .feature-dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:var(--accent-2);
+      margin-top:9px;
+      flex:0 0 auto;
+    }
+
+    .steps{
+      display:grid;
+      gap:18px;
+    }
+
+    .step-card{
+      padding:24px;
+    }
+
+    .step-label{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:88px;
+      min-height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--surface-strong);
+      font-size:.85rem;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .step-card h3{
+      margin:0 0 8px;
+      font-size:1.25rem;
+      line-height:1.3;
+    }
+
+    .step-card p{
+      margin:0;
+      color:var(--text-soft);
+    }
+
+    .use-cases{
+      display:grid;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .use-case{
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      background:#fff;
+    }
+
+    .muted{
+      color:var(--text-soft);
+    }
+
+    .site-footer{
+      margin-top:30px;
+      border-top:1px solid var(--line);
+      background:var(--surface);
+    }
+
+    .footer-inner{
+      min-height:90px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:16px;
+      color:var(--text-soft);
+      font-weight:700;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width:900px){
+      .grid-2{grid-template-columns:1fr}
+    }
+
+    @media (max-width:720px){
+      .nav{display:none}
+      .hero-box,.card,.step-card{padding:22px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">こ</div>
+        <div class="brand-text">
+          <span>こばらのアプリ</span>
+          <small>Kobara Apps</small>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#apps">Apps</a>
+        <a href="index.html#information">Information</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <span class="eyebrow">Kobara Schedule</span>
+          <h1>How to use</h1>
+          <p class="hero-subtitle">Kobara Schedule の使い方</p>
+          <p class="lead">
+            Kobara Schedule は、ログイン不要で使える日程調整ツールです。
+            主催者がイベントを作成し、候補日を設定して参加者に共有すると、参加者は候補日に投票できます。
+            投票結果を見ながら日程を確定し、その後の出欠確認まで続けて使えます。
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank" rel="noopener noreferrer">今すぐ使う</a>
+            <a class="btn btn-secondary" href="index.html#apps">Apps に戻る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <article class="card">
+          <div class="section-head">
+            <h2>できること</h2>
+            <p>Kobara Schedule では、日程調整に必要な流れをシンプルにまとめています。</p>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-dot"></span><span>イベントを作成できる</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>候補日を設定して投票してもらえる</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>投票結果を見ながら日程を確定できる</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>確定後の出欠確認まで続けて使える</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>ICS カレンダー出力に対応している</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="section-head">
+            <h2>こんな人に向いています</h2>
+            <p>まずは日程を決めたい場面や、外部メンバーを含む調整に向いています。</p>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-dot"></span><span>単発イベントの日程を決めたい人</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>ログイン不要で共有したい人</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>外部メンバーも含めて調整したい人</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>日程確定後の出欠確認まで一気にしたい人</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>使い方の流れ</h2>
+          <p>主催者がイベントを作ってから、参加者の投票、日程確定、出欠確認までの流れです。</p>
+        </div>
+
+        <div class="steps">
+          <article class="step-card">
+            <div class="step-label">Step 1</div>
+            <h3>イベントを作成する</h3>
+            <p>
+              まずはイベント名や説明、候補期間などを入力してイベントを作成します。
+              作成が完了すると、参加者向けページと主催者向けの管理ページが用意されます。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-label">Step 2</div>
+            <h3>候補日を設定する</h3>
+            <p>
+              候補期間を設定すると、その期間内の日付から候補日にしたい日を選べます。
+              必要に応じて、参加者に投票してほしい日だけを候補として登録します。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-label">Step 3</div>
+            <h3>参加者に共有する</h3>
+            <p>
+              参加者向けページのURLを共有すると、参加者はログイン不要でアクセスできます。
+              外部メンバーがいるイベントや、単発の予定調整にも向いています。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-label">Step 4</div>
+            <h3>投票してもらう</h3>
+            <p>
+              参加者は候補日ごとに参加可否を入力できます。
+              主催者は投票結果を見ながら、集まりやすい日程を比較できます。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-label">Step 5</div>
+            <h3>日程を確定する</h3>
+            <p>
+              投票結果をもとに、主催者が最終日程を確定します。
+              確定後は、イベントの予定を参加者に明確に案内できます。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-label">Step 6</div>
+            <h3>確定後の出欠を確認する</h3>
+            <p>
+              Kobara Schedule は日程を決めるだけでなく、確定後の出欠確認にも対応しています。
+              本番参加や練習参加など、最終的な人数確認にも役立ちます。
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-label">Step 7</div>
+            <h3>カレンダーに追加する</h3>
+            <p>
+              ICS カレンダー出力に対応しているため、確定した予定をカレンダーに取り込めます。
+              個人の予定管理にも反映しやすいのが特徴です。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <article class="card">
+          <div class="section-head">
+            <h2>利用シーン</h2>
+            <p>小さなイベントやコミュニティ活動など、幅広い場面で使えます。</p>
+          </div>
+
+          <div class="use-cases">
+            <div class="use-case">
+              <strong>アンサンブルや練習会の調整</strong><br>
+              <span class="muted">メンバーや賛助参加者を含めて、集まりやすい日を選べます。</span>
+            </div>
+
+            <div class="use-case">
+              <strong>少人数イベントの開催日決定</strong><br>
+              <span class="muted">打ち合わせ、食事会、勉強会などの候補日投票に向いています。</span>
+            </div>
+
+            <div class="use-case">
+              <strong>確定後の出欠確認</strong><br>
+              <span class="muted">日程決定で終わらず、その後の最終出欠まで続けて管理できます。</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>こばらのアプリ</strong><br>
+        <span class="muted">Kobara Apps</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#apps">Apps</a>
+        <a href="index.html#information">Information</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

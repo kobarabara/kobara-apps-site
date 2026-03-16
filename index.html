@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kobara Apps</title>
+<title>こばらのアプリ | 日程調整・団体運営のWebアプリ</title>
+<meta name="description" content="こばらのアプリは、日程調整や団体運営を少し便利にするWebアプリのポータルです。Kobara Schedule などのツールを掲載しています。">
 
 <style>
 :root{
@@ -56,6 +57,7 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 min-height:72px;
+gap:16px;
 }
 
 .brand{
@@ -88,6 +90,7 @@ display:flex;
 gap:18px;
 font-weight:700;
 color:var(--text-soft);
+flex-wrap:wrap;
 }
 
 .nav a:hover{color:var(--accent)}
@@ -116,22 +119,32 @@ font-size:.9rem;
 }
 
 h1{
-font-size:clamp(2.2rem,5vw,3.6rem);
-margin:20px 0 14px;
+font-size:clamp(2rem,4.2vw,3rem);
+margin:18px 0 10px;
 letter-spacing:-.02em;
+line-height:1.2;
+}
+
+.hero-subtitle{
+font-size:clamp(1.05rem,2vw,1.35rem);
+font-weight:800;
+color:var(--accent);
+margin:0 0 18px;
 }
 
 .lead{
 color:var(--text-soft);
-font-size:1.1rem;
+font-size:1.08rem;
+max-width:46em;
+margin:0;
 }
 
 .btn{
 display:inline-flex;
 align-items:center;
 justify-content:center;
-min-height:48px;
-padding:0 22px;
+min-height:46px;
+padding:0 20px;
 border-radius:999px;
 font-weight:800;
 border:1px solid transparent;
@@ -158,6 +171,7 @@ section{padding:20px 0 40px}
 .section-head h2{
 margin:0 0 8px;
 font-size:clamp(1.7rem,3vw,2.4rem);
+line-height:1.2;
 }
 
 .section-head p{
@@ -188,7 +202,13 @@ border:1px solid var(--line);
 width:fit-content;
 }
 
-.card h3{margin:0}
+.card h3{
+margin:0;
+font-size:1.35rem;
+line-height:1.3;
+}
+
+.card h3 a:hover{color:var(--accent)}
 
 .card p{margin:0;color:var(--text-soft)}
 
@@ -202,6 +222,15 @@ height:10px;
 border-radius:999px;
 background:var(--accent-2);
 margin-top:8px;
+flex:0 0 auto;
+}
+
+.card-actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:auto;
+padding-top:10px;
 }
 
 .notice-card{
@@ -239,14 +268,6 @@ color:var(--text-soft);
 margin:0 0 16px;
 }
 
-.notice-footer{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-flex-wrap:wrap;
-}
-
 .notice-badge{
 display:inline-flex;
 align-items:center;
@@ -258,9 +279,7 @@ font-size:.82rem;
 font-weight:800;
 }
 
-.info-box{
-padding:28px;
-}
+.info-box{padding:28px}
 
 .info-list{
 display:grid;
@@ -288,6 +307,7 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 flex-wrap:wrap;
+gap:16px;
 }
 
 .footer-links{
@@ -295,6 +315,7 @@ display:flex;
 gap:16px;
 color:var(--text-soft);
 font-weight:700;
+flex-wrap:wrap;
 }
 
 @media (max-width:900px){
@@ -306,7 +327,6 @@ font-weight:700;
 .hero-box,.card,.info-box,.notice-card{padding:22px}
 .notice-title{font-size:1.15rem}
 .notice-title-row{align-items:flex-start}
-.notice-footer{align-items:flex-start}
 }
 </style>
 </head>
@@ -314,50 +334,48 @@ font-weight:700;
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#top" class="brand">
-      <div class="brand-mark">K</div>
+    <a href="index.html" class="brand">
+      <div class="brand-mark">こ</div>
       <div class="brand-text">
-        <span>Kobara Apps</span>
-        <small>small tools for real communities</small>
+        <span>こばらのアプリ</span>
+        <small>Kobara Apps</small>
       </div>
     </a>
 
     <nav class="nav">
-      <a href="#apps">Apps</a>
-      <a href="#information">Information</a>
+      <a href="index.html#apps">Apps</a>
+      <a href="index.html#information">Information</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
-
   <section class="hero">
     <div class="container">
       <div class="hero-box">
-        <span class="eyebrow">Kobara Apps</span>
-        <h1>こばらのWebアプリ</h1>
+        <span class="eyebrow">こばらのアプリ</span>
+        <h1>こばらのアプリ</h1>
+        <p class="hero-subtitle">日程調整や団体運営を、少しやさしく。</p>
         <p class="lead">
-          Kobara Apps は、日程調整や団体運営など
-          日々の活動を少しだけ便利にするためのツールを作っています。
+          こばらのアプリは、日程調整や団体運営など、日々の活動を少し便利にするための Web ツールをまとめたポータルです。
         </p>
 
         <div style="margin-top:32px">
-          <h3 style="margin:0 0 10px">Information</h3>
+          <h2 style="margin:0 0 10px;font-size:1.35rem;">Information</h2>
           <div class="notice-card">
             <p class="notice-meta">NEW APP / 2026</p>
 
             <div class="notice-title-row">
               <div class="notice-title">Kobara Schedule を公開しました</div>
-              <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank">今すぐ使う</a>
+              <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank" rel="noopener noreferrer">今すぐ使う</a>
             </div>
 
             <p class="notice-copy">
               ログイン不要で使える日程調整ツールです。イベント作成、候補日投票、日程確定、出欠確認まで一連の流れで使えます。
             </p>
 
-            <div class="notice-footer">
-              <span class="notice-badge">Instagramは準備中</span>
-            </div>
+            <span class="notice-badge">Instagram は準備中</span>
           </div>
         </div>
       </div>
@@ -367,16 +385,15 @@ font-weight:700;
   <section id="apps">
     <div class="container">
       <div class="section-head">
-        <h2>アプリ</h2>
-        <p>用途に応じて使える Web アプリを提供しています。</p>
+        <h2>アプリ一覧</h2>
+        <p>用途に応じて使える Web アプリを掲載しています。詳しい使い方は各カードの How to use から確認できます。</p>
       </div>
 
       <div class="app-grid">
-
         <article class="card" id="schedule">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
             <span class="card-tag">公開中</span>
-            <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank">今すぐ使う</a>
+            <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank" rel="noopener noreferrer">今すぐ使う</a>
           </div>
 
           <h3>Kobara Schedule</h3>
@@ -386,7 +403,11 @@ font-weight:700;
             <div class="feature-item"><span class="feature-dot"></span><span>候補日を選んで参加者が投票</span></div>
             <div class="feature-item"><span class="feature-dot"></span><span>最適な日程を確定</span></div>
             <div class="feature-item"><span class="feature-dot"></span><span>確定後の出欠確認</span></div>
-            <div class="feature-item"><span class="feature-dot"></span><span>ICSカレンダー出力</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>ICS カレンダー出力</span></div>
+          </div>
+
+          <div class="card-actions">
+            <a class="btn btn-secondary" href="schedule.html">How to use</a>
           </div>
         </article>
 
@@ -405,14 +426,17 @@ font-weight:700;
             <div class="feature-item"><span class="feature-dot"></span><span>会費管理</span></div>
             <div class="feature-item"><span class="feature-dot"></span><span>楽譜・掲示板</span></div>
           </div>
+
+          <div class="card-actions">
+            <a class="btn btn-secondary" href="portal.html">How to use</a>
+          </div>
         </article>
 
         <article class="card">
           <span class="card-tag">Coming Soon</span>
           <h3>Next Apps</h3>
-          <p>Kobara Apps では今後もツールを追加予定です。</p>
+          <p>こばらのアプリでは今後もツールを追加予定です。</p>
         </article>
-
       </div>
     </div>
   </section>
@@ -430,29 +454,25 @@ font-weight:700;
           <a class="info-item" href="privacy.html">プライバシーポリシー</a>
         </div>
       </div>
-
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
   <div class="container footer-inner">
-
     <div>
-      <strong>Kobara Apps</strong><br>
-      <span style="color:var(--text-soft)">small tools for real communities</span>
+      <strong>こばらのアプリ</strong><br>
+      <span style="color:var(--text-soft)">Kobara Apps</span>
     </div>
 
     <div class="footer-links">
-      <a href="#information">Information</a>
-      <a href="#apps">Apps</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#portal">Portal</a>
+      <a href="index.html#apps">Apps</a>
+      <a href="index.html#information">Information</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
     </div>
-
   </div>
 </footer>
-
 </body>
 </html>

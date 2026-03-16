@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensemble Portal | 詳しく見る</title>
+  <meta name="description" content="Ensemble Portal は、アンサンブルや楽団向けの団体運営ツールです。練習予定、出欠、会費、楽譜、掲示板などをまとめて扱う構想です。">
+  <style>
+    :root{
+      --bg:#f6f1ea;
+      --surface:#fbf8f4;
+      --surface-strong:#f1e8dc;
+      --line:#d8cdbc;
+      --text:#183b6b;
+      --text-soft:#52657f;
+      --accent:#1d4b82;
+      --accent-2:#9d7a45;
+      --shadow:0 10px 30px rgba(24,59,107,0.08);
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:12px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right,rgba(157,122,69,0.10),transparent 24%),
+        radial-gradient(circle at left center,rgba(29,75,130,0.06),transparent 22%),
+        var(--bg);
+      line-height:1.75;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(calc(100% - 32px),var(--max));
+      margin:0 auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(10px);
+      background:rgba(246,241,234,0.9);
+      border-bottom:1px solid var(--line);
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:72px;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent),#2d639f);
+      color:#fff;
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+
+    .brand-text small{
+      display:block;
+      font-size:.8rem;
+      color:var(--text-soft);
+    }
+
+    .nav{
+      display:flex;
+      gap:18px;
+      font-weight:700;
+      color:var(--text-soft);
+      flex-wrap:wrap;
+    }
+
+    .nav a:hover{color:var(--accent)}
+
+    .hero{padding:60px 0 28px}
+
+    .hero-box,
+    .card,
+    .notice-box{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-box{padding:42px}
+
+    .eyebrow{
+      display:inline-block;
+      padding:7px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:800;
+      font-size:.9rem;
+    }
+
+    h1{
+      font-size:clamp(2.1rem,4.8vw,3.3rem);
+      margin:18px 0 12px;
+      letter-spacing:-.02em;
+      line-height:1.15;
+    }
+
+    .hero-subtitle{
+      font-size:clamp(1.05rem,2vw,1.28rem);
+      font-weight:800;
+      color:var(--accent);
+      margin:0 0 18px;
+    }
+
+    .lead{
+      color:var(--text-soft);
+      font-size:1.06rem;
+      max-width:48em;
+      margin:0;
+    }
+
+    .hero-actions{
+      margin-top:26px;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 22px;
+      border-radius:999px;
+      font-weight:800;
+      border:1px solid transparent;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .btn-secondary{
+      background:#fff;
+      border:1px solid var(--line);
+      color:var(--accent);
+    }
+
+    section{padding:20px 0 34px}
+
+    .section-head{
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      margin:0 0 8px;
+      font-size:clamp(1.55rem,3vw,2rem);
+      line-height:1.2;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--text-soft);
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .card{
+      padding:28px;
+    }
+
+    .feature-list{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .feature-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      font-weight:700;
+    }
+
+    .feature-dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:var(--accent-2);
+      margin-top:9px;
+      flex:0 0 auto;
+    }
+
+    .notice-box{
+      padding:22px;
+      margin-top:22px;
+      background:linear-gradient(180deg,#fff,#f8f2ea);
+    }
+
+    .notice-label{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--surface-strong);
+      font-size:.82rem;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .notice-box p{
+      margin:0;
+      color:var(--text-soft);
+    }
+
+    .use-cases{
+      display:grid;
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .use-case{
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      background:#fff;
+    }
+
+    .muted{
+      color:var(--text-soft);
+    }
+
+    .site-footer{
+      margin-top:30px;
+      border-top:1px solid var(--line);
+      background:var(--surface);
+    }
+
+    .footer-inner{
+      min-height:90px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:16px;
+      color:var(--text-soft);
+      font-weight:700;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width:900px){
+      .grid-2{grid-template-columns:1fr}
+    }
+
+    @media (max-width:720px){
+      .nav{display:none}
+      .hero-box,.card,.notice-box{padding:22px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">こ</div>
+        <div class="brand-text">
+          <span>こばらのアプリ</span>
+          <small>Kobara Apps</small>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html#apps">Apps</a>
+        <a href="index.html#information">Information</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <span class="eyebrow">Ensemble Portal</span>
+          <h1>Ensemble Portal</h1>
+          <p class="hero-subtitle">アンサンブルや楽団のための団体運営ツール</p>
+          <p class="lead">
+            Ensemble Portal は、アンサンブルや楽団など、継続的に活動する団体の運営を少し整理しやすくするためのツールです。
+            単発の日程調整ではなく、練習予定や出欠、会費、楽譜、連絡事項など、日々の運営で必要になる情報をまとめて扱うことを目指しています。
+          </p>
+
+          <div class="hero-actions">
+            <span class="btn btn-secondary" style="opacity:.75;">現在準備中</span>
+            <a class="btn btn-secondary" href="index.html#apps">Apps に戻る</a>
+          </div>
+
+          <div class="notice-box">
+            <div class="notice-label">ご案内</div>
+            <p>
+              現在、Ensemble Portal は紹介ページとして公開しています。
+              今後、団体向けの案内や申請導線などを追加していく予定です。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <article class="card">
+          <div class="section-head">
+            <h2>できること</h2>
+            <p>継続的な団体運営に必要な情報を、ひとつの場所で扱いやすくする想定です。</p>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-dot"></span><span>練習予定の管理</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>出欠確認</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>会費管理</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>楽譜管理</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>掲示板や連絡事項の共有</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="section-head">
+            <h2>こんな団体に向いています</h2>
+            <p>単発イベントよりも、継続して活動するグループや団体向けです。</p>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-dot"></span><span>アンサンブルや室内楽団体</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>練習や本番の予定を整理したい団体</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>会員情報や会費を管理したい団体</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>楽譜や連絡事項を一元管理したい団体</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <article class="card">
+          <div class="section-head">
+            <h2>利用イメージ</h2>
+            <p>Ensemble Portal は、日々の団体運営を少しずつ整えていくための基盤として使うことを想定しています。</p>
+          </div>
+
+          <div class="use-cases">
+            <div class="use-case">
+              <strong>練習予定をまとめる</strong><br>
+              <span class="muted">練習日、場所、内容、参加状況などをひとつの場所で管理しやすくします。</span>
+            </div>
+
+            <div class="use-case">
+              <strong>メンバーとの情報共有</strong><br>
+              <span class="muted">連絡事項や掲示板のような形で、団体内の情報を共有しやすくします。</span>
+            </div>
+
+            <div class="use-case">
+              <strong>運営情報を整理する</strong><br>
+              <span class="muted">会費や楽譜など、散らばりやすい情報をまとめて見られるようにする想定です。</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>こばらのアプリ</strong><br>
+        <span class="muted">Kobara Apps</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html#apps">Apps</a>
+        <a href="index.html#information">Information</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
