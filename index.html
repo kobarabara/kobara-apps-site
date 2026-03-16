@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kobara Apps</title>
+
+<style>
+:root{
+--bg:#f6f1ea;
+--surface:#fbf8f4;
+--surface-strong:#f1e8dc;
+--line:#d8cdbc;
+--text:#183b6b;
+--text-soft:#52657f;
+--accent:#1d4b82;
+--accent-2:#9d7a45;
+--shadow:0 10px 30px rgba(24,59,107,0.08);
+--radius-lg:24px;
+--radius-md:18px;
+--radius-sm:12px;
+--max:1100px;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;
+color:var(--text);
+background:
+radial-gradient(circle at top right,rgba(157,122,69,0.10),transparent 24%),
+radial-gradient(circle at left center,rgba(29,75,130,0.06),transparent 22%),
+var(--bg);
+line-height:1.7;
+}
+
+a{color:inherit;text-decoration:none}
+
+.container{
+width:min(calc(100% - 32px),var(--max));
+margin:0 auto;
+}
+
+.site-header{
+position:sticky;
+top:0;
+z-index:50;
+backdrop-filter:blur(10px);
+background:rgba(246,241,234,0.9);
+border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+display:flex;
+align-items:center;
+justify-content:space-between;
+min-height:72px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:800;
+}
+
+.brand-mark{
+width:42px;
+height:42px;
+border-radius:14px;
+display:grid;
+place-items:center;
+background:linear-gradient(135deg,var(--accent),#2d639f);
+color:#fff;
+font-weight:900;
+box-shadow:var(--shadow);
+}
+
+.brand-text small{
+display:block;
+font-size:.8rem;
+color:var(--text-soft);
+}
+
+.nav{
+display:flex;
+gap:18px;
+font-weight:700;
+color:var(--text-soft);
+}
+
+.nav a:hover{color:var(--accent)}
+
+.hero{padding:70px 0 30px}
+
+.hero-box,
+.card,
+.info-box{
+background:var(--surface);
+border:1px solid var(--line);
+border-radius:var(--radius-lg);
+box-shadow:var(--shadow);
+}
+
+.hero-box{padding:42px}
+
+.eyebrow{
+display:inline-block;
+padding:7px 14px;
+border-radius:999px;
+border:1px solid var(--line);
+background:#fff;
+font-weight:800;
+font-size:.9rem;
+}
+
+h1{
+font-size:clamp(2.2rem,5vw,3.6rem);
+margin:20px 0 14px;
+letter-spacing:-.02em;
+}
+
+.lead{
+color:var(--text-soft);
+font-size:1.1rem;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:48px;
+padding:0 22px;
+border-radius:999px;
+font-weight:800;
+border:1px solid transparent;
+white-space:nowrap;
+}
+
+.btn-primary{
+background:var(--accent);
+color:white;
+}
+
+.btn-primary:hover{background:#163a65}
+
+.btn-secondary{
+background:#fff;
+border:1px solid var(--line);
+color:var(--accent);
+}
+
+section{padding:20px 0 40px}
+
+.section-head{margin-bottom:22px}
+
+.section-head h2{
+margin:0 0 8px;
+font-size:clamp(1.7rem,3vw,2.4rem);
+}
+
+.section-head p{
+margin:0;
+color:var(--text-soft);
+}
+
+.app-grid{
+display:grid;
+gap:20px;
+grid-template-columns:repeat(3,1fr);
+}
+
+.card{
+padding:28px;
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.card-tag{
+font-size:.8rem;
+font-weight:800;
+padding:6px 12px;
+border-radius:999px;
+background:var(--surface-strong);
+border:1px solid var(--line);
+width:fit-content;
+}
+
+.card h3{margin:0}
+
+.card p{margin:0;color:var(--text-soft)}
+
+.feature-list{display:grid;gap:10px;margin-top:6px}
+
+.feature-item{display:flex;gap:10px;font-weight:700}
+
+.feature-dot{
+width:10px;
+height:10px;
+border-radius:999px;
+background:var(--accent-2);
+margin-top:8px;
+}
+
+.notice-card{
+padding:28px;
+background:linear-gradient(180deg,#fff,#f8f2ea);
+border-radius:var(--radius-md);
+border:1px solid var(--line);
+}
+
+.notice-meta{
+font-size:.88rem;
+font-weight:800;
+color:var(--accent);
+margin:0 0 10px;
+}
+
+.notice-title-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+margin-bottom:10px;
+}
+
+.notice-title{
+font-size:1.3rem;
+font-weight:900;
+line-height:1.35;
+margin:0;
+}
+
+.notice-copy{
+color:var(--text-soft);
+margin:0 0 16px;
+}
+
+.notice-footer{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.notice-badge{
+display:inline-flex;
+align-items:center;
+padding:6px 12px;
+border-radius:999px;
+background:var(--surface-strong);
+border:1px solid var(--line);
+font-size:.82rem;
+font-weight:800;
+}
+
+.info-box{
+padding:28px;
+}
+
+.info-list{
+display:grid;
+gap:12px;
+margin-top:14px;
+}
+
+.info-item{
+padding:14px 16px;
+border:1px solid var(--line);
+border-radius:var(--radius-sm);
+background:white;
+font-weight:700;
+}
+
+.site-footer{
+margin-top:30px;
+border-top:1px solid var(--line);
+background:var(--surface);
+}
+
+.footer-inner{
+min-height:90px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+.footer-links{
+display:flex;
+gap:16px;
+color:var(--text-soft);
+font-weight:700;
+}
+
+@media (max-width:900px){
+.app-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:720px){
+.nav{display:none}
+.hero-box,.card,.info-box,.notice-card{padding:22px}
+.notice-title{font-size:1.15rem}
+.notice-title-row{align-items:flex-start}
+.notice-footer{align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="brand">
+      <div class="brand-mark">K</div>
+      <div class="brand-text">
+        <span>Kobara Apps</span>
+        <small>small tools for real communities</small>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="#apps">Apps</a>
+      <a href="#information">Information</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-box">
+        <span class="eyebrow">Kobara Apps</span>
+        <h1>こばらのWebアプリ</h1>
+        <p class="lead">
+          Kobara Apps は、日程調整や団体運営など
+          日々の活動を少しだけ便利にするためのツールを作っています。
+        </p>
+
+        <div style="margin-top:32px">
+          <h3 style="margin:0 0 10px">Information</h3>
+          <div class="notice-card">
+            <p class="notice-meta">NEW APP / 2026</p>
+
+            <div class="notice-title-row">
+              <div class="notice-title">Kobara Schedule を公開しました</div>
+              <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank">今すぐ使う</a>
+            </div>
+
+            <p class="notice-copy">
+              ログイン不要で使える日程調整ツールです。イベント作成、候補日投票、日程確定、出欠確認まで一連の流れで使えます。
+            </p>
+
+            <div class="notice-footer">
+              <span class="notice-badge">Instagramは準備中</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apps">
+    <div class="container">
+      <div class="section-head">
+        <h2>アプリ</h2>
+        <p>用途に応じて使える Web アプリを提供しています。</p>
+      </div>
+
+      <div class="app-grid">
+
+        <article class="card" id="schedule">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+            <span class="card-tag">公開中</span>
+            <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank">今すぐ使う</a>
+          </div>
+
+          <h3>Kobara Schedule</h3>
+          <p>ログイン不要で使える日程調整ツールです。</p>
+
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-dot"></span><span>候補日を選んで参加者が投票</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>最適な日程を確定</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>確定後の出欠確認</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>ICSカレンダー出力</span></div>
+          </div>
+        </article>
+
+        <article class="card" id="portal">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+            <span class="card-tag">Coming Soon</span>
+            <span class="btn btn-secondary" style="opacity:.7">準備中</span>
+          </div>
+
+          <h3>Ensemble Portal</h3>
+          <p>アンサンブルや楽団などの団体運営をサポートする管理ツールです。</p>
+
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-dot"></span><span>練習予定管理</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>出欠管理</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>会費管理</span></div>
+            <div class="feature-item"><span class="feature-dot"></span><span>楽譜・掲示板</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="card-tag">Coming Soon</span>
+          <h3>Next Apps</h3>
+          <p>Kobara Apps では今後もツールを追加予定です。</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="information">
+    <div class="container">
+      <div class="section-head">
+        <h2>Information</h2>
+      </div>
+
+      <div class="info-box">
+        <div class="info-list">
+          <a class="info-item" href="contact.html">お問い合わせ</a>
+          <a class="info-item" href="terms.html">利用規約</a>
+          <a class="info-item" href="privacy.html">プライバシーポリシー</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+
+    <div>
+      <strong>Kobara Apps</strong><br>
+      <span style="color:var(--text-soft)">small tools for real communities</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="#information">Information</a>
+      <a href="#apps">Apps</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#portal">Portal</a>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
