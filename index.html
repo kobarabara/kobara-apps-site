@@ -1,478 +1,167 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>こばらのアプリ | 日程調整・団体運営のWebアプリ</title>
-<meta name="description" content="こばらのアプリは、日程調整や団体運営を少し便利にするWebアプリのポータルです。Kobara Schedule などのツールを掲載しています。">
-
-<style>
-:root{
---bg:#f6f1ea;
---surface:#fbf8f4;
---surface-strong:#f1e8dc;
---line:#d8cdbc;
---text:#183b6b;
---text-soft:#52657f;
---accent:#1d4b82;
---accent-2:#9d7a45;
---shadow:0 10px 30px rgba(24,59,107,0.08);
---radius-lg:24px;
---radius-md:18px;
---radius-sm:12px;
---max:1100px;
-}
-
-*{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;
-color:var(--text);
-background:
-radial-gradient(circle at top right,rgba(157,122,69,0.10),transparent 24%),
-radial-gradient(circle at left center,rgba(29,75,130,0.06),transparent 22%),
-var(--bg);
-line-height:1.7;
-}
-
-a{color:inherit;text-decoration:none}
-
-.container{
-width:min(calc(100% - 32px),var(--max));
-margin:0 auto;
-}
-
-.site-header{
-position:sticky;
-top:0;
-z-index:50;
-backdrop-filter:blur(10px);
-background:rgba(246,241,234,0.9);
-border-bottom:1px solid var(--line);
-}
-
-.header-inner{
-display:flex;
-align-items:center;
-justify-content:space-between;
-min-height:72px;
-gap:16px;
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
-font-weight:800;
-}
-
-.brand-mark{
-width:42px;
-height:42px;
-border-radius:14px;
-display:grid;
-place-items:center;
-background:linear-gradient(135deg,var(--accent),#2d639f);
-color:#fff;
-font-weight:900;
-box-shadow:var(--shadow);
-}
-
-.brand-text small{
-display:block;
-font-size:.8rem;
-color:var(--text-soft);
-}
-
-.nav{
-display:flex;
-gap:18px;
-font-weight:700;
-color:var(--text-soft);
-flex-wrap:wrap;
-}
-
-.nav a:hover{color:var(--accent)}
-
-.hero{padding:70px 0 30px}
-
-.hero-box,
-.card,
-.info-box{
-background:var(--surface);
-border:1px solid var(--line);
-border-radius:var(--radius-lg);
-box-shadow:var(--shadow);
-}
-
-.hero-box{padding:42px}
-
-.eyebrow{
-display:inline-block;
-padding:7px 14px;
-border-radius:999px;
-border:1px solid var(--line);
-background:#fff;
-font-weight:800;
-font-size:.9rem;
-}
-
-h1{
-font-size:clamp(2rem,4.2vw,3rem);
-margin:18px 0 10px;
-letter-spacing:-.02em;
-line-height:1.2;
-}
-
-.hero-subtitle{
-font-size:clamp(1.05rem,2vw,1.35rem);
-font-weight:800;
-color:var(--accent);
-margin:0 0 18px;
-}
-
-.lead{
-color:var(--text-soft);
-font-size:1.08rem;
-max-width:46em;
-margin:0;
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-min-height:46px;
-padding:0 20px;
-border-radius:999px;
-font-weight:800;
-border:1px solid transparent;
-white-space:nowrap;
-}
-
-.btn-primary{
-background:var(--accent);
-color:white;
-}
-
-.btn-primary:hover{background:#163a65}
-
-.btn-secondary{
-background:#fff;
-border:1px solid var(--line);
-color:var(--accent);
-}
-
-section{padding:20px 0 40px}
-
-.section-head{margin-bottom:22px}
-
-.section-head h2{
-margin:0 0 8px;
-font-size:clamp(1.7rem,3vw,2.4rem);
-line-height:1.2;
-}
-
-.section-head p{
-margin:0;
-color:var(--text-soft);
-}
-
-.app-grid{
-display:grid;
-gap:20px;
-grid-template-columns:repeat(3,1fr);
-}
-
-.card{
-padding:28px;
-display:flex;
-flex-direction:column;
-gap:14px;
-}
-
-.card-tag{
-font-size:.8rem;
-font-weight:800;
-padding:6px 12px;
-border-radius:999px;
-background:var(--surface-strong);
-border:1px solid var(--line);
-width:fit-content;
-}
-
-.card h3{
-margin:0;
-font-size:1.35rem;
-line-height:1.3;
-}
-
-.card h3 a:hover{color:var(--accent)}
-
-.card p{margin:0;color:var(--text-soft)}
-
-.feature-list{display:grid;gap:10px;margin-top:6px}
-
-.feature-item{display:flex;gap:10px;font-weight:700}
-
-.feature-dot{
-width:10px;
-height:10px;
-border-radius:999px;
-background:var(--accent-2);
-margin-top:8px;
-flex:0 0 auto;
-}
-
-.card-actions{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:auto;
-padding-top:10px;
-}
-
-.notice-card{
-padding:28px;
-background:linear-gradient(180deg,#fff,#f8f2ea);
-border-radius:var(--radius-md);
-border:1px solid var(--line);
-}
-
-.notice-meta{
-font-size:.88rem;
-font-weight:800;
-color:var(--accent);
-margin:0 0 10px;
-}
-
-.notice-title-row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:18px;
-flex-wrap:wrap;
-margin-bottom:10px;
-}
-
-.notice-title{
-font-size:1.3rem;
-font-weight:900;
-line-height:1.35;
-margin:0;
-}
-
-.notice-copy{
-color:var(--text-soft);
-margin:0 0 16px;
-}
-
-.notice-badge{
-display:inline-flex;
-align-items:center;
-padding:6px 12px;
-border-radius:999px;
-background:var(--surface-strong);
-border:1px solid var(--line);
-font-size:.82rem;
-font-weight:800;
-}
-
-.info-box{padding:28px}
-
-.info-list{
-display:grid;
-gap:12px;
-margin-top:14px;
-}
-
-.info-item{
-padding:14px 16px;
-border:1px solid var(--line);
-border-radius:var(--radius-sm);
-background:white;
-font-weight:700;
-}
-
-.site-footer{
-margin-top:30px;
-border-top:1px solid var(--line);
-background:var(--surface);
-}
-
-.footer-inner{
-min-height:90px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:16px;
-}
-
-.footer-links{
-display:flex;
-gap:16px;
-color:var(--text-soft);
-font-weight:700;
-flex-wrap:wrap;
-}
-
-@media (max-width:900px){
-.app-grid{grid-template-columns:1fr}
-}
-
-@media (max-width:720px){
-.nav{display:none}
-.hero-box,.card,.info-box,.notice-card{padding:22px}
-.notice-title{font-size:1.15rem}
-.notice-title-row{align-items:flex-start}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kobara Apps | 音楽団体・アンサンブル向けの便利なWebアプリ</title>
+  <meta name="description" content="Kobara Appsは、音楽団体・アンサンブル・サークル運営に役立つWebアプリの入口ページです。日程調整、団体運営、会員向け管理などに使えるサービスをご案内しています。">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
+<body data-page="index.html">
+  <div class="site-shell">
+    <div id="site-header"></div>
 
-<body>
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <div class="brand-mark">こ</div>
-      <div class="brand-text">
-        <span>こばらのアプリ</span>
-        <small>Kobara Apps</small>
-      </div>
-    </a>
-
-    <nav class="nav">
-      <a href="index.html#apps">Apps</a>
-      <a href="index.html#information">Information</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
-  <section class="hero">
-    <div class="container">
-      <div class="hero-box">
-        <span class="eyebrow">こばらのアプリ</span>
-        <h1>こばらのアプリ</h1>
-        <p class="hero-subtitle">日程調整や団体運営を、少しやさしく。</p>
-        <p class="lead">
-          こばらのアプリは、日程調整や団体運営など、日々の活動を少し便利にするための Web ツールをまとめたポータルです。
-        </p>
-
-        <div style="margin-top:32px">
-          <h2 style="margin:0 0 10px;font-size:1.35rem;">Information</h2>
-          <div class="notice-card">
-            <p class="notice-meta">NEW APP / 2026</p>
-
-            <div class="notice-title-row">
-              <div class="notice-title">Kobara Schedule を公開しました</div>
-              <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank" rel="noopener noreferrer">今すぐ使う</a>
-            </div>
-
-            <p class="notice-copy">
-              ログイン不要で使える日程調整ツールです。イベント作成、候補日投票、日程確定、出欠確認まで一連の流れで使えます。
+    <main class="site-main">
+      <div class="container">
+        <section class="hero">
+          <div class="hero-main">
+            <span class="eyebrow">For Ensemble & Community</span>
+            <h1>音楽団体やアンサンブル運営を、<br>もっとシンプルに。</h1>
+            <p>
+              Kobara Apps は、音楽団体・アンサンブル・サークル・イベント運営に役立つ
+              Webアプリへつながる入口ページです。
+              日程調整から会員向け運営まで、目的に応じて使えるサービスをご案内しています。
             </p>
-
-            <span class="notice-badge">Instagram は準備中</span>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="schedule.html">Kobara Scheduleを見る</a>
+              <a class="btn btn-secondary" href="portal.html">Ensemble Portalを見る</a>
+            </div>
+            <ul class="mini-points">
+              <li>・ログイン不要で使える日程調整ツール</li>
+              <li>・団体運営や会員向け情報共有を支えるポータル機能</li>
+              <li>・音楽活動や団体運営に役立つ情報も今後ご紹介予定</li>
+            </ul>
           </div>
-        </div>
+
+          <aside class="hero-side">
+            <span class="eyebrow">おすすめサービス</span>
+            <h2 style="margin:0 0 10px; font-size:22px;">音楽活動や団体運営に役立つ情報も掲載します</h2>
+            <p>
+              Kobara Apps では、アプリのご案内に加え、音楽活動・団体運営・アンサンブル運営に
+              関わるサービスや情報も、今後このページで自然にご紹介していきます。
+            </p>
+            <p>
+              利用者向けの導線を妨げすぎない配置で、必要な情報に触れられる構成を目指しています。
+            </p>
+          </aside>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">おすすめサービス</h2>
+          <p class="section-lead">
+            ここには、音楽活動や団体運営に関わる情報・サービスが表示されます。
+          </p>
+
+          <div class="ad-card">
+            <span class="ad-slot-label">SITE_TOP_HERO_BANNER</span>
+            <div class="ad-wide-inner" id="site-hero-banner">
+              <div class="ad-wide-media">横長広告枠</div>
+              <div class="ad-wide-copy">
+                <h3>おすすめサービス掲載枠</h3>
+                <p>この位置に、横長のおすすめサービス情報が表示されます。</p>
+              </div>
+              <div>
+                <a class="ad-link-btn" href="contact.html">お問い合わせ</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">利用できるアプリ</h2>
+          <p class="section-lead">
+            Kobara Apps から、目的に応じて各アプリへ移動できます。
+          </p>
+
+          <div class="apps-grid">
+            <article class="app-card">
+              <h3>Kobara Schedule</h3>
+              <p>
+                ログイン不要で使える日程調整ツールです。
+                候補日を出して、参加者が回答し、最適な日程を決める流れをシンプルに進められます。
+              </p>
+              <ul class="app-points">
+                <li>候補日をまとめて登録</li>
+                <li>参加者が回答しやすい画面</li>
+                <li>確定後の出欠確認にも対応</li>
+              </ul>
+              <a class="btn btn-primary" href="schedule.html">詳しく見る</a>
+            </article>
+
+            <article class="app-card">
+              <h3>Ensemble Portal</h3>
+              <p>
+                アンサンブルや団体運営のための会員向けポータルです。
+                お知らせ、練習予定、運営情報などを整理して運用しやすくすることを目指しています。
+              </p>
+              <ul class="app-points">
+                <li>会員向けの運営導線を整理</li>
+                <li>団体ごとの情報管理に対応</li>
+                <li>今後の拡張を見据えた構成</li>
+              </ul>
+              <a class="btn btn-primary" href="portal.html">詳しく見る</a>
+            </article>
+          </div>
+
+          <div class="ad-mini-grid">
+            <article class="ad-mini-card" id="site-card-1">
+              <span class="ad-slot-label">SITE_TOP_FEATURE_CARDS_1</span>
+              <div class="ad-mini-media">小型広告枠</div>
+              <h4>おすすめサービス枠</h4>
+              <p>この位置に小型のおすすめサービスが表示されます。</p>
+              <a class="ad-link-btn" href="contact.html">お問い合わせ</a>
+            </article>
+
+            <article class="ad-mini-card" id="site-card-2">
+              <span class="ad-slot-label">SITE_TOP_FEATURE_CARDS_2</span>
+              <div class="ad-mini-media">小型広告枠</div>
+              <h4>おすすめサービス枠</h4>
+              <p>この位置に小型のおすすめサービスが表示されます。</p>
+              <a class="ad-link-btn" href="contact.html">お問い合わせ</a>
+            </article>
+
+            <article class="ad-mini-card" id="site-card-3">
+              <span class="ad-slot-label">SITE_TOP_FEATURE_CARDS_3</span>
+              <div class="ad-mini-media">小型広告枠</div>
+              <h4>おすすめサービス枠</h4>
+              <p>この位置に小型のおすすめサービスが表示されます。</p>
+              <a class="ad-link-btn" href="contact.html">お問い合わせ</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>このサイトについて</h3>
+              <p>
+                Kobara Apps は、音楽団体・アンサンブル・サークル・コミュニティ運営の中で
+                「あると助かる」Webアプリにつながる入口として設計しています。
+              </p>
+              <p>
+                日程調整、会員向け情報共有、団体運営導線の整理など、
+                現場で実際に使いやすいことを重視して改善を進めています。
+              </p>
+            </article>
+
+            <article class="info-card">
+              <h3>お問い合わせ</h3>
+              <p>
+                ご質問・ご相談がある場合は、お問い合わせページからご連絡ください。
+                アプリに関するご相談のほか、各種ご連絡にも対応しています。
+              </p>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="contact.html">お問い合わせへ</a>
+              </div>
+            </article>
+          </div>
+        </section>
       </div>
-    </div>
-  </section>
+    </main>
 
-  <section id="apps">
-    <div class="container">
-      <div class="section-head">
-        <h2>アプリ一覧</h2>
-        <p>用途に応じて使える Web アプリを掲載しています。詳しい使い方は各カードの How to use から確認できます。</p>
-      </div>
-
-      <div class="app-grid">
-        <article class="card" id="schedule">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-            <span class="card-tag">公開中</span>
-            <a class="btn btn-primary" href="https://schedule-engine-kobarabara-412f5655eb4f.herokuapp.com/scheduler/" target="_blank" rel="noopener noreferrer">今すぐ使う</a>
-          </div>
-
-          <h3>Kobara Schedule</h3>
-          <p>ログイン不要で使える日程調整ツールです。</p>
-
-          <div class="feature-list">
-            <div class="feature-item"><span class="feature-dot"></span><span>候補日を選んで参加者が投票</span></div>
-            <div class="feature-item"><span class="feature-dot"></span><span>最適な日程を確定</span></div>
-            <div class="feature-item"><span class="feature-dot"></span><span>確定後の出欠確認</span></div>
-            <div class="feature-item"><span class="feature-dot"></span><span>ICS カレンダー出力</span></div>
-          </div>
-
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="schedule.html">How to use</a>
-          </div>
-        </article>
-
-        <article class="card" id="portal">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-            <span class="card-tag">Coming Soon</span>
-            <span class="btn btn-secondary" style="opacity:.7">準備中</span>
-          </div>
-
-          <h3>Ensemble Portal</h3>
-          <p>アンサンブルや楽団などの団体運営をサポートする管理ツールです。</p>
-
-          <div class="feature-list">
-            <div class="feature-item"><span class="feature-dot"></span><span>練習予定管理</span></div>
-            <div class="feature-item"><span class="feature-dot"></span><span>出欠管理</span></div>
-            <div class="feature-item"><span class="feature-dot"></span><span>会費管理</span></div>
-            <div class="feature-item"><span class="feature-dot"></span><span>楽譜・掲示板</span></div>
-          </div>
-
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="portal.html">How to use</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <span class="card-tag">Coming Soon</span>
-          <h3>Next Apps</h3>
-          <p>こばらのアプリでは今後もツールを追加予定です。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="information">
-    <div class="container">
-      <div class="section-head">
-        <h2>Information</h2>
-      </div>
-
-      <div class="info-box">
-        <div class="info-list">
-          <a class="info-item" href="contact.html">お問い合わせ</a>
-          <a class="info-item" href="terms.html">利用規約</a>
-          <a class="info-item" href="privacy.html">プライバシーポリシー</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div>
-      <strong>こばらのアプリ</strong><br>
-      <span style="color:var(--text-soft)">Kobara Apps</span>
-    </div>
-
-    <div class="footer-links">
-      <a href="index.html#apps">Apps</a>
-      <a href="index.html#information">Information</a>
-      <a href="contact.html">Contact</a>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-    </div>
+    <div id="site-footer"></div>
   </div>
-</footer>
+
+  <script src="assets/layout.js"></script>
 </body>
 </html>
