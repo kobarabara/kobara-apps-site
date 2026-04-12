@@ -68,6 +68,26 @@
       margin-top: -6px;
       margin-bottom: 18px;
     }
+    .form-status {
+      display: none;
+      margin-bottom: 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .form-status.is-success {
+      display: block;
+      background: #eef8f1;
+      color: #1f6b3a;
+      border: 1px solid #b9dfc4;
+    }
+    .form-status.is-error {
+      display: block;
+      background: #fff2f2;
+      color: #a33a3a;
+      border: 1px solid #efc5c5;
+    }
     .submit {
       display: inline-block;
       margin-top: 8px;
@@ -83,6 +103,10 @@
     }
     .submit:hover {
       opacity: 0.92;
+    }
+    .submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -100,10 +124,12 @@
         ※ 送信内容を確認のうえ、必要に応じてご返信いたします。
       </p>
 
+      <div id="form-status" class="form-status"></div>
+
       <form id="contact-form">
         <div class="form-group">
           <label for="inquiry-type">お問い合わせ種別</label>
-          <select id="inquiry-type" name="inquiry_type">
+          <select id="inquiry-type" name="inquiry_type" required>
             <option value="general">一般のお問い合わせ</option>
             <option value="listing">掲載のご相談</option>
           </select>
@@ -124,44 +150,63 @@
           <textarea id="message" name="message" placeholder="ご相談内容をご記入ください" required></textarea>
         </div>
 
-        <button type="submit" class="submit">送信する</button>
+        <button type="submit" class="submit" id="submit-button">送信する</button>
       </form>
-
-      <script>
-      document.getElementById("contact-form").addEventListener("submit", async function(e) {
-        e.preventDefault();
-
-        const data = {
-          inquiry_type: document.getElementById("inquiry-type").value,
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          message: document.getElementById("message").value
-        };
-
-        try {
-          const res = await fetch("https://mute-bird-798d.komiyabara.workers.dev", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
-
-          const result = await res.json();
-
-          if (result.ok) {
-            alert("送信しました");
-            document.getElementById("contact-form").reset();
-          } else {
-            alert("エラー：" + result.error);
-          }
-
-        } catch (err) {
-          alert("送信に失敗しました");
-        }
-      });
-      </script>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const submitButton = document.getElementById("submit-button");
+    const statusBox = document.getElementById("form-status");
+
+    function showStatus(message, type) {
+      statusBox.textContent = message;
+      statusBox.className = "form-status " + type;
+    }
+
+    function clearStatus() {
+      statusBox.textContent = "";
+      statusBox.className = "form-status";
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      clearStatus();
+      submitButton.disabled = true;
+      submitButton.textContent = "送信中...";
+
+      const data = {
+        inquiry_type: document.getElementById("inquiry-type").value,
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        message: document.getElementById("message").value.trim()
+      };
+
+      try {
+        const res = await fetch("https://mute-bird-798d.komiyabara.workers.dev/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (result.ok) {
+          form.reset();
+          showStatus("お問い合わせを受け付けました。内容を確認のうえ、必要に応じてご返信いたします。", "is-success");
+        } else {
+          showStatus(result.error || "送信に失敗しました。時間をおいて再度お試しください。", "is-error");
+        }
+      } catch (err) {
+        showStatus("通信エラーが発生しました。時間をおいて再度お試しください。", "is-error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "送信する";
+      }
+    });
+  </script>
 </body>
 </html>
