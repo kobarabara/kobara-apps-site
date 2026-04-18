@@ -10,26 +10,24 @@
     return `<a href="${href}"${isActive}>${label}</a>`;
   }
 
-  if (headerTarget) {
-    headerTarget.innerHTML = `
-      <header class="site-header">
-        <div class="container">
-          <div class="topbar">
-            <a href="index.html" class="brand-wrap">
-              <div class="brand">Kobara Apps</div>
-              <div class="brand-sub">日常でちょっと便利なWebアプリの入口サイト</div>
-            </a>
-            <nav class="site-nav">
-              ${navLink("index.html", "Home")}
-              ${navLink("schedule.html", "Kobara Schedule")}
-              ${navLink("portal.html", "Ensemble Portal")}
-              ${navLink("contact.html", "お問い合わせ")}
-            </nav>
-          </div>
+if (headerTarget) {
+  headerTarget.innerHTML = `
+    <header class="site-header">
+      <div class="container">
+        <div class="topbar">
+          <a href="index.html" class="brand-wrap">
+            <div class="brand">Kobara Apps</div>
+            <div class="brand-sub">日常でちょっと便利なWebアプリの入口サイト</div>
+          </a>
+          <nav class="site-nav">
+            ${navLink("index.html", "Home")}
+            ${navLink("contact.html", "お問い合わせ")}
+          </nav>
         </div>
-      </header>
-    `;
-  }
+      </div>
+    </header>
+  `;
+}
 
 if (footerTarget) {
   footerTarget.innerHTML = `
