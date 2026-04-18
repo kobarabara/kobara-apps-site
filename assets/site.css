@@ -325,11 +325,9 @@ img {
   min-width: 0;
 }
 
-.site-side-ad-wrap {
-  display: grid;
-  gap: 16px;
-  position: sticky;
-  top: 96px;
+.site-side-column {
+  min-width: 0;
+  align-self: start;
 }
 
 .site-side-placeholder,
@@ -419,7 +417,18 @@ img {
 }
 
 .site-ad-card.is-side .site-ad-card__media {
-  aspect-ratio: 1 / 1;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.site-ad-card.is-side .site-ad-card__media img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.site-ad-card.is-side .site-ad-card__body {
+  padding: 14px 16px 16px;
 }
 
 .site-ad-card.is-footer-50 .site-ad-card__media {
