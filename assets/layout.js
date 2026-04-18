@@ -56,75 +56,58 @@
       .replace(/'/g, "&#39;");
   }
 
-  function buildHeroBanner(ad) {
+  function buildAdCard(ad, sizeClass) {
     const title = escapeHtml(ad.title || "おすすめサービス");
     const body = escapeHtml(ad.body || "");
+    const linkUrl = escapeHtml(ad.click_url || ad.link_url || "#");
     const imageHtml = ad.image_url
       ? `<img src="${escapeHtml(ad.image_url)}" alt="${title}">`
-      : "広告";
-
-    const linkUrl = escapeHtml(ad.click_url || ad.link_url || "#");
+      : `<div class="site-ad-placeholder">広告</div>`;
 
     return `
-      <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="ad-wide-inner" style="text-decoration:none;color:inherit;">
-        <div class="ad-wide-media">${imageHtml}</div>
-        <div class="ad-wide-copy">
-          <h3>${title}</h3>
-          <p>${body}</p>
+      <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="site-ad-card ${sizeClass}">
+        <div class="site-ad-card__media">
+          ${imageHtml}
         </div>
-        <div>
-          <span class="ad-link-btn">詳しく見る</span>
+        <div class="site-ad-card__body">
+          <div class="site-ad-card__title">${title}</div>
+          ${body ? `<div class="site-ad-card__text">${body}</div>` : ""}
         </div>
       </a>
     `;
   }
 
-  function buildMiniCard(ad) {
-    const title = escapeHtml(ad.title || "おすすめサービス");
-    const body = escapeHtml(ad.body || "");
-    const shortBody = body.length > 60 ? `${body.slice(0, 60)}…` : body;
-    const imageHtml = ad.image_url
-      ? `<img src="${escapeHtml(ad.image_url)}" alt="${title}">`
-      : "広告";
+  function renderSideAds(ads) {
+    const target = document.getElementById("site-side-ads");
+    if (!target) return;
 
-    const linkUrl = escapeHtml(ad.click_url || ad.link_url || "#");
+    if (!ads.length) {
+      return;
+    }
 
-    return `
-      <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" style="display:block;text-decoration:none;color:inherit;">
-        <span class="ad-slot-label">${escapeHtml(ad.slot || "")}</span>
-        <div class="ad-mini-media">${imageHtml}</div>
-        <h4>${title}</h4>
-        <p>${shortBody}</p>
-      </a>
-    `;
+    target.innerHTML = ads.map((ad) => buildAdCard(ad, "is-side")).join("");
   }
 
-  function renderAdsBySlot(adsBySlot) {
-    const heroTarget = document.getElementById("site-hero-banner");
-    const card1 = document.getElementById("site-card-1");
-    const card2 = document.getElementById("site-card-2");
-    const card3 = document.getElementById("site-card-3");
+  function renderFooter100(ads) {
+    const target = document.getElementById("site-footer-100");
+    if (!target) return;
 
-    const heroAds = adsBySlot["SITE_TOP_HERO_BANNER"] || [];
-    const card1Ads = adsBySlot["SITE_TOP_FEATURE_CARDS_1"] || [];
-    const card2Ads = adsBySlot["SITE_TOP_FEATURE_CARDS_2"] || [];
-    const card3Ads = adsBySlot["SITE_TOP_FEATURE_CARDS_3"] || [];
-
-    if (heroTarget && heroAds.length > 0) {
-      heroTarget.innerHTML = buildHeroBanner(heroAds[0]);
+    if (!ads.length) {
+      return;
     }
 
-    if (card1 && card1Ads.length > 0) {
-      card1.innerHTML = buildMiniCard(card1Ads[0]);
+    target.innerHTML = ads.map((ad) => buildAdCard(ad, "is-footer-100")).join("");
+  }
+
+  function renderFooter50(ads) {
+    const target = document.getElementById("site-footer-50");
+    if (!target) return;
+
+    if (!ads.length) {
+      return;
     }
 
-    if (card2 && card2Ads.length > 0) {
-      card2.innerHTML = buildMiniCard(card2Ads[0]);
-    }
-
-    if (card3 && card3Ads.length > 0) {
-      card3.innerHTML = buildMiniCard(card3Ads[0]);
-    }
+    target.innerHTML = ads.map((ad) => buildAdCard(ad, "is-footer-50")).join("");
   }
 
   async function loadSiteAds() {
@@ -147,7 +130,13 @@
         return;
       }
 
-      renderAdsBySlot(data.ads_by_slot);
+      const sideAds = data.ads_by_slot["SITE_DESKTOP_SIDE_30"] || [];
+      const footer50Ads = data.ads_by_slot["SITE_FOOTER_50"] || [];
+      const footer100Ads = data.ads_by_slot["SITE_FOOTER_100"] || [];
+
+      renderSideAds(sideAds);
+      renderFooter50(footer50Ads);
+      renderFooter100(footer100Ads);
     } catch (error) {
       console.error("site ads load failed", error);
     }
