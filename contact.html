@@ -23,11 +23,11 @@
     <main class="site-main">
       <div class="container">
 
-        <section class="page-hero section">
-          <div class="page-hero-card">
+        <section class="section">
+          <div class="hero-main">
             <span class="eyebrow">Contact</span>
-            <h1>お問い合わせ</h1>
-            <p class="page-lead">
+            <h1 class="section-title">お問い合わせ</h1>
+            <p class="section-lead">
               ご質問・ご相談を受け付けています。
               おすすめサービス掲載のご相談もこちらからお送りください。
             </p>
@@ -35,7 +35,7 @@
         </section>
 
         <section class="section">
-          <article class="detail-card detail-card--narrow">
+          <article class="info-card">
             <p class="section-lead">
               送信内容を確認のうえ、必要に応じてご返信いたします。
             </p>
@@ -66,7 +66,10 @@
                 <textarea id="message" name="message" placeholder="ご相談内容をご記入ください" required></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary" id="submit-button">送信する</button>
+              <div class="card-actions">
+                <button type="submit" class="btn btn-primary" id="submit-button">送信する</button>
+                <a class="btn btn-secondary" href="index.html">トップへ戻る</a>
+              </div>
             </form>
           </article>
         </section>

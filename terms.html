@@ -3,36 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>利用規約 | Kobara Apps</title>
+
+  <title>利用規約｜Kobara Apps</title>
+  <meta name="description" content="Kobara Apps の利用規約です。">
+  <link rel="canonical" href="https://apps.kobaracreative.com/terms.html">
+
+  <meta property="og:title" content="利用規約｜Kobara Apps">
+  <meta property="og:description" content="Kobara Apps の利用規約">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apps.kobaracreative.com/terms.html">
+
+  <link rel="stylesheet" href="assets/site.css">
+
   <style>
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic UI",sans-serif;background:#f6f1ea;color:#183b6b;line-height:1.8}
-    .container{width:min(calc(100% - 32px),860px);margin:0 auto;padding:40px 0 80px}
-    .card{background:#fbf8f4;border:1px solid #d8cdbc;border-radius:24px;padding:28px;box-shadow:0 10px 30px rgba(24,59,107,.08)}
-    h1{margin-top:0}
-    h2{margin-top:28px;font-size:1.15rem}
-    p,li{color:#52657f}
-    .back{display:inline-block;margin-bottom:20px;color:#1d4b82;font-weight:700;text-decoration:none}
+    .legal-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .legal-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .legal-card h1 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 2rem;
+      line-height: 1.3;
+    }
+
+    .legal-card h2 {
+      margin-top: 28px;
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+      color: var(--text);
+    }
+
+    .legal-card p,
+    .legal-card li {
+      color: var(--sub);
+      line-height: 1.9;
+    }
+
+    .legal-card ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .legal-back {
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 720px) {
+      .legal-card {
+        padding: 20px;
+      }
+
+      .legal-card h1 {
+        font-size: 1.7rem;
+      }
+    }
   </style>
 </head>
-<body>
-  <div class="container">
-    <a class="back" href="/index.html">← Kobara Apps に戻る</a>
-    <div class="card">
-      <h1>利用規約</h1>
-      <p>本規約は、Kobara Apps が提供するサービスの利用条件を定めるものです。</p>
-      <h2>1. サービス内容</h2>
-      <p>本サービスは、日程調整、団体運営支援、その他関連機能を提供します。内容は予告なく変更される場合があります。</p>
-      <h2>2. 免責</h2>
-      <p>本サービスの継続性、完全性、正確性は保証されません。本サービスの利用により生じた損害について、運営者は責任を負いません。</p>
-      <h2>3. 禁止事項</h2>
-      <ul>
-        <li>法令または公序良俗に反する行為</li>
-        <li>不正アクセスやサービス妨害行為</li>
-        <li>虚偽情報の送信</li>
-      </ul>
-      <h2>4. 規約の変更</h2>
-      <p>本規約は必要に応じて改定される場合があります。</p>
-    </div>
+
+<body data-page="terms.html">
+  <div class="site-shell">
+    <div id="site-header"></div>
+
+    <main class="site-main">
+      <div class="container">
+        <div class="legal-wrap">
+          <div class="legal-back">
+            <a class="btn btn-secondary" href="index.html">トップへ戻る</a>
+          </div>
+
+          <article class="legal-card">
+            <h1>利用規約</h1>
+
+            <p>
+              本規約は、Kobara Apps が提供する各種サービスの利用条件を定めるものです。
+              本サービスを利用することで、本規約に同意したものとみなします。
+            </p>
+
+            <h2>1. サービス内容</h2>
+            <p>
+              本サービスは、日程調整、団体運営支援、その他関連機能を提供します。
+              提供内容は、予告なく追加・変更・停止される場合があります。
+            </p>
+
+            <h2>2. 利用者の責任</h2>
+            <p>
+              利用者は、法令、公序良俗、および本規約に従って本サービスを利用するものとします。
+              利用者が送信または登録する情報については、自らの責任で管理するものとします。
+            </p>
+
+            <h2>3. 禁止事項</h2>
+            <ul>
+              <li>法令または公序良俗に反する行為</li>
+              <li>不正アクセスやサービス運営を妨害する行為</li>
+              <li>虚偽情報の送信または登録</li>
+              <li>第三者に不利益や損害を与える行為</li>
+            </ul>
+
+            <h2>4. 免責事項</h2>
+            <p>
+              本サービスの継続性、完全性、正確性、有用性について、運営者は保証しません。
+              本サービスの利用または利用不能により生じた損害について、運営者は責任を負いません。
+            </p>
+
+            <h2>5. サービスの変更・停止</h2>
+            <p>
+              運営者は、保守、障害対応、その他必要がある場合に、
+              事前の通知なく本サービスの全部または一部を変更・停止できるものとします。
+            </p>
+
+            <h2>6. 規約の変更</h2>
+            <p>
+              本規約は、必要に応じて改定される場合があります。
+              改定後の内容は、掲載時点から効力を生じるものとします。
+            </p>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <div id="site-footer"></div>
   </div>
+
+  <script src="assets/layout.js"></script>
 </body>
 </html>

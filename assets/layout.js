@@ -40,6 +40,8 @@
             <a href="schedule.html">Kobara Schedule</a>
             <a href="portal.html">Ensemble Portal</a>
             <a href="contact.html">お問い合わせ</a>
+            <a href="terms.html">利用規約</a>
+            <a href="privacy.html">プライバシーポリシー</a>
           </div>
           <div>© Kobara Apps</div>
         </div>
@@ -80,10 +82,7 @@
   function renderSideAds(ads) {
     const target = document.getElementById("site-side-ads");
     if (!target) return;
-
-    if (!ads.length) {
-      return;
-    }
+    if (!ads.length) return;
 
     target.innerHTML = ads.map((ad) => buildAdCard(ad, "is-side")).join("");
   }
@@ -91,10 +90,7 @@
   function renderFooter100(ads) {
     const target = document.getElementById("site-footer-100");
     if (!target) return;
-
-    if (!ads.length) {
-      return;
-    }
+    if (!ads.length) return;
 
     target.innerHTML = ads.map((ad) => buildAdCard(ad, "is-footer-100")).join("");
   }
@@ -102,10 +98,7 @@
   function renderFooter50(ads) {
     const target = document.getElementById("site-footer-50");
     if (!target) return;
-
-    if (!ads.length) {
-      return;
-    }
+    if (!ads.length) return;
 
     target.innerHTML = ads.map((ad) => buildAdCard(ad, "is-footer-50")).join("");
   }

@@ -11,6 +11,12 @@
   --accent-soft: #eef4fb;
   --ad-bg: #f8f4ee;
   --hero-side-bg: #f7f1e9;
+  --success-bg: #eef8f1;
+  --success-text: #1f6b3a;
+  --success-line: #b9dfc4;
+  --error-bg: #fff2f2;
+  --error-text: #a33a3a;
+  --error-line: #efc5c5;
   --shadow: 0 10px 28px rgba(24, 59, 107, 0.07);
   --radius-lg: 24px;
   --radius-md: 18px;
@@ -131,9 +137,6 @@ img {
 .hero-side,
 .app-card,
 .info-card,
-.page-hero-card,
-.detail-card,
-.step-card,
 .site-side-placeholder,
 .site-footer-placeholder,
 .site-ad-card {
@@ -165,22 +168,25 @@ img {
   margin-bottom: 14px;
 }
 
-.hero h1 {
-  margin: 0 0 14px;
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.22;
-  letter-spacing: -0.02em;
+.hero h1,
+.section-title {
+  margin: 0 0 10px;
+  font-size: 28px;
+  line-height: 1.25;
 }
 
 .hero p,
-.section-lead {
+.section-lead,
+.info-card p,
+.app-card p {
   margin: 0 0 16px;
   color: var(--sub);
   font-size: 17px;
 }
 
 .hero-actions,
-.card-actions {
+.card-actions,
+.info-links {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
@@ -269,12 +275,6 @@ img {
   margin: 16px 0 0;
 }
 
-.section-title {
-  margin: 0 0 10px;
-  font-size: 28px;
-  line-height: 1.25;
-}
-
 .apps-grid,
 .info-grid {
   display: grid;
@@ -289,16 +289,12 @@ img {
   grid-template-columns: 1.05fr 0.95fr;
 }
 
+.app-card h2,
 .app-card h3,
+.info-card h2,
 .info-card h3 {
   margin: 0 0 10px;
   font-size: 24px;
-}
-
-.app-card p,
-.info-card p {
-  margin: 0 0 14px;
-  color: var(--sub);
 }
 
 .app-points {
@@ -309,7 +305,7 @@ img {
   margin-bottom: 7px;
 }
 
-/* 新しい入口広告レイアウト */
+/* 入口広告レイアウト */
 .site-main-with-side {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 30%;
@@ -419,27 +415,14 @@ img {
   font-weight: 700;
 }
 
-.site-ad-card.is-side .site-ad-card__media {
-  min-height: 0;
-  aspect-ratio: auto;
-}
-
-.site-ad-card.is-side .site-ad-card__media img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.site-ad-card.is-side .site-ad-card__body {
-  padding: 14px 16px 16px;
-}
-
+.site-ad-card.is-side .site-ad-card__media,
 .site-ad-card.is-footer-50 .site-ad-card__media,
 .site-ad-card.is-footer-100 .site-ad-card__media {
   min-height: 0;
   aspect-ratio: auto;
 }
 
+.site-ad-card.is-side .site-ad-card__media img,
 .site-ad-card.is-footer-50 .site-ad-card__media img,
 .site-ad-card.is-footer-100 .site-ad-card__media img {
   width: 100%;
@@ -456,6 +439,65 @@ img {
   padding: 18px 20px;
 }
 
+/* フォーム */
+.contact-form {
+  margin-top: 18px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cdbfaa;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 16px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+
+textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.form-status {
+  display: none;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.form-status.is-success {
+  display: block;
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid var(--success-line);
+}
+
+.form-status.is-error {
+  display: block;
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-line);
+}
+
+/* フッター */
 .site-footer {
   padding: 30px 0 60px;
   color: var(--sub);
@@ -514,8 +556,7 @@ img {
   .app-card,
   .info-card,
   .site-side-placeholder,
-  .site-footer-placeholder,
-  .site-ad-card {
+  .site-footer-placeholder {
     padding: 20px;
   }
 
@@ -523,12 +564,10 @@ img {
     font-size: 24px;
   }
 
-  .hero h1 {
-    font-size: 32px;
-  }
-
   .hero p,
-  .section-lead {
+  .section-lead,
+  .info-card p,
+  .app-card p {
     font-size: 16px;
   }
 
