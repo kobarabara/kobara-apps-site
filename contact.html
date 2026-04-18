@@ -3,158 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ | Kobara Apps</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
-      background: #f6f1ea;
-      color: #183b6b;
-      line-height: 1.7;
-    }
-    .container {
-      width: min(calc(100% - 32px), 860px);
-      margin: 0 auto;
-      padding: 40px 0 80px;
-    }
-    .card {
-      background: #fbf8f4;
-      border: 1px solid #d8cdbc;
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(24,59,107,.08);
-    }
-    h1 {
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-    p {
-      color: #52657f;
-      margin: 0 0 16px;
-    }
-    .back {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #1d4b82;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .form-group {
-      margin-bottom: 18px;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 700;
-      color: #183b6b;
-    }
-    input, select, textarea {
-      width: 100%;
-      box-sizing: border-box;
-      border: 1px solid #cdbfaa;
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-size: 16px;
-      background: #fff;
-      color: #183b6b;
-    }
-    textarea {
-      min-height: 180px;
-      resize: vertical;
-    }
-    .note {
-      font-size: 14px;
-      color: #6a7c93;
-      margin-top: -6px;
-      margin-bottom: 18px;
-    }
-    .form-status {
-      display: none;
-      margin-bottom: 18px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      font-size: 15px;
-      font-weight: 700;
-    }
-    .form-status.is-success {
-      display: block;
-      background: #eef8f1;
-      color: #1f6b3a;
-      border: 1px solid #b9dfc4;
-    }
-    .form-status.is-error {
-      display: block;
-      background: #fff2f2;
-      color: #a33a3a;
-      border: 1px solid #efc5c5;
-    }
-    .submit {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 12px 22px;
-      border: none;
-      border-radius: 999px;
-      background: #1d4b82;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .submit:hover {
-      opacity: 0.92;
-    }
-    .submit:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-    }
-  </style>
+
+  <title>お問い合わせ｜Kobara Apps</title>
+  <meta name="description" content="Kobara Apps に関するご質問、ご相談、おすすめサービス掲載のご相談はこちらから。">
+  <link rel="canonical" href="https://apps.kobaracreative.com/contact.html">
+
+  <meta property="og:title" content="お問い合わせ｜Kobara Apps">
+  <meta property="og:description" content="Kobara Apps に関するご質問・ご相談はこちらから">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apps.kobaracreative.com/contact.html">
+
+  <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
-  <div class="container">
-    <a class="back" href="index.html">← Kobara Apps に戻る</a>
 
-    <div class="card">
-      <h1>お問い合わせ</h1>
-      <p>
-        Kobara Apps に関するご質問・ご相談を受け付けています。<br>
-        おすすめサービス掲載のご相談も、こちらからお送りください。
-      </p>
-      <p class="note">
-        ※ 送信内容を確認のうえ、必要に応じてご返信いたします。
-      </p>
+<body data-page="contact.html">
+  <div class="site-shell">
+    <div id="site-header"></div>
 
-      <div id="form-status" class="form-status"></div>
+    <main class="site-main">
+      <div class="container">
 
-      <form id="contact-form">
-        <div class="form-group">
-          <label for="inquiry-type">お問い合わせ種別</label>
-          <select id="inquiry-type" name="inquiry_type" required>
-            <option value="general">一般のお問い合わせ</option>
-            <option value="listing">掲載のご相談</option>
-          </select>
-        </div>
+        <section class="page-hero section">
+          <div class="page-hero-card">
+            <span class="eyebrow">Contact</span>
+            <h1>お問い合わせ</h1>
+            <p class="page-lead">
+              ご質問・ご相談を受け付けています。
+              おすすめサービス掲載のご相談もこちらからお送りください。
+            </p>
+          </div>
+        </section>
 
-        <div class="form-group">
-          <label for="name">お名前</label>
-          <input type="text" id="name" name="name" placeholder="お名前を入力してください" required>
-        </div>
+        <section class="section">
+          <article class="detail-card detail-card--narrow">
+            <p class="section-lead">
+              送信内容を確認のうえ、必要に応じてご返信いたします。
+            </p>
 
-        <div class="form-group">
-          <label for="email">メールアドレス</label>
-          <input type="email" id="email" name="email" placeholder="返信先のメールアドレス" required>
-        </div>
+            <div id="form-status" class="form-status"></div>
 
-        <div class="form-group">
-          <label for="message">お問い合わせ内容</label>
-          <textarea id="message" name="message" placeholder="ご相談内容をご記入ください" required></textarea>
-        </div>
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="inquiry-type">お問い合わせ種別</label>
+                <select id="inquiry-type" name="inquiry_type" required>
+                  <option value="general">一般のお問い合わせ</option>
+                  <option value="listing">掲載のご相談</option>
+                </select>
+              </div>
 
-        <button type="submit" class="submit" id="submit-button">送信する</button>
-      </form>
-    </div>
+              <div class="form-group">
+                <label for="name">お名前</label>
+                <input type="text" id="name" name="name" placeholder="お名前を入力してください" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" placeholder="返信先のメールアドレス" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message">お問い合わせ内容</label>
+                <textarea id="message" name="message" placeholder="ご相談内容をご記入ください" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="submit-button">送信する</button>
+            </form>
+          </article>
+        </section>
+
+      </div>
+    </main>
+
+    <div id="site-footer"></div>
   </div>
 
+  <script src="assets/layout.js"></script>
   <script>
     const form = document.getElementById("contact-form");
     const submitButton = document.getElementById("submit-button");
