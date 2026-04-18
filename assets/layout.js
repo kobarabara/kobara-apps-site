@@ -10,38 +10,38 @@
     return `<a href="${href}"${isActive}>${label}</a>`;
   }
 
-if (headerTarget) {
-  headerTarget.innerHTML = `
-    <header class="site-header">
-      <div class="container">
-        <div class="topbar">
-          <a href="index.html" class="brand-wrap">
-            <div class="brand">Kobara Apps</div>
-            <div class="brand-sub">日常でちょっと便利なWebアプリの入口サイト</div>
-          </a>
-          <nav class="site-nav">
-            ${navLink("index.html", "Home")}
-            ${navLink("contact.html", "お問い合わせ")}
-          </nav>
+  if (headerTarget) {
+    headerTarget.innerHTML = `
+      <header class="site-header">
+        <div class="container">
+          <div class="topbar">
+            <a href="index.html" class="brand-wrap">
+              <div class="brand">Kobara Apps</div>
+              <div class="brand-sub">日常でちょっと便利なWebアプリの入口サイト</div>
+            </a>
+            <nav class="site-nav">
+              ${navLink("index.html", "Home")}
+              ${navLink("contact.html", "お問い合わせ")}
+            </nav>
+          </div>
         </div>
-      </div>
-    </header>
-  `;
-}
+      </header>
+    `;
+  }
 
-if (footerTarget) {
-  footerTarget.innerHTML = `
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-links">
-          <a href="terms.html">利用規約</a>
-          <a href="privacy.html">プライバシーポリシー</a>
+  if (footerTarget) {
+    footerTarget.innerHTML = `
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-links">
+            <a href="terms.html">利用規約</a>
+            <a href="privacy.html">プライバシーポリシー</a>
+          </div>
+          <div>© Kobara Apps</div>
         </div>
-        <div>© Kobara Apps</div>
-      </div>
-    </footer>
-  `;
-}
+      </footer>
+    `;
+  }
 
   function escapeHtml(value) {
     return String(value || "")
