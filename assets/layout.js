@@ -31,23 +31,19 @@
     `;
   }
 
-  if (footerTarget) {
-    footerTarget.innerHTML = `
-      <footer class="site-footer">
-        <div class="container">
-          <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="schedule.html">Kobara Schedule</a>
-            <a href="portal.html">Ensemble Portal</a>
-            <a href="contact.html">お問い合わせ</a>
-            <a href="terms.html">利用規約</a>
-            <a href="privacy.html">プライバシーポリシー</a>
-          </div>
-          <div>© Kobara Apps</div>
+if (footerTarget) {
+  footerTarget.innerHTML = `
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-links">
+          <a href="terms.html">利用規約</a>
+          <a href="privacy.html">プライバシーポリシー</a>
         </div>
-      </footer>
-    `;
-  }
+        <div>© Kobara Apps</div>
+      </div>
+    </footer>
+  `;
+}
 
   function escapeHtml(value) {
     return String(value || "")
