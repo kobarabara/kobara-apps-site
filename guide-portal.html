@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensemble Portal 使い方ガイド</title>
+  <link rel="stylesheet" href="assets/site.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .guide-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .guide-hero {
+      margin-bottom: 48px;
+    }
+
+    .guide-hero h1 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .guide-hero p {
+      line-height: 1.9;
+      font-size: 1.05rem;
+    }
+
+    .guide-toc {
+      margin: 0 0 48px;
+      background: #fff;
+      border: 1px solid #e5ddd1;
+      border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .guide-toc h2 {
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+    }
+
+    .guide-toc h3 {
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-size: 1.08rem;
+    }
+
+    .guide-toc-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 18px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .guide-toc-list a {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid #e5ddd1;
+      border-radius: 999px;
+      background: #faf7f1;
+      color: inherit;
+      text-decoration: none;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .guide-toc-list a:hover {
+      background: #f2eadc;
+    }
+
+    .guide-section {
+      scroll-margin-top: 24px;
+      margin-bottom: 72px;
+      background: #fff;
+      border: 1px solid #e5ddd1;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .guide-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .guide-section p {
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .guide-image {
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .guide-image img {
+      width: 100%;
+      max-width: 1000px;
+      border-radius: 16px;
+      border: 1px solid #ddd;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .guide-note {
+      background: #faf7f1;
+      border-left: 4px solid #b89b5e;
+      padding: 18px 20px;
+      border-radius: 10px;
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+
+    .guide-back-top {
+      text-align: right;
+      margin-top: 24px;
+    }
+
+    .guide-back-top a {
+      color: inherit;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 720px) {
+      .guide-toc-list {
+        grid-template-columns: 1fr;
+      }
+
+      .guide-section {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="guide-wrap">
+
+  <section class="guide-hero" id="top">
+    <h1>Ensemble Portal 使い方ガイド</h1>
+  </section>
+
+  <nav class="guide-toc" aria-label="目次">
+    <h2>目次（赤字は管理者・編集者向け機能、青字が一般向け機能）</h2>
+
+    <h3>使い始める方向け</h3>
+    <ul class="guide-toc-list">
+      <li><a href="#join-request">① 参加申請をする</a></li>
+      <li><a href="#login">② ログインする</a></li>
+    </ul>
+
+    <h3>メンバー向けの使い方</h3>
+    <ul class="guide-toc-list">
+      <li><a href="#home">③ ホーム画面を見る</a></li>
+      <li><a href="#mypage">④ マイページを確認する</a></li>
+      <li><a href="#practice-list">⑤ 練習予定を確認する</a></li>
+      <li><a href="#attendance-edit">⑥ 出欠を登録する</a></li>
+      <li><a href="#score-list">⑦ 楽譜を確認・検索する</a></li>
+    </ul>
+
+    <h3>新しく団体を作る方</h3>
+    <ul class="guide-toc-list">
+      <li><a href="#account-create">⑧ 団体申請用のアカウントを作る</a></li>
+      <li><a href="#organization-create">⑨ 団体を作る</a></li>
+    </ul>
+
+    <h3>管理者・編集者向けの使い方</h3>
+    <ul class="guide-toc-list">
+      <li><a href="#practice-add">⑩ 練習予定を追加する</a></li>
+      <li><a href="#score-upload">⑪ 楽譜をアップロードする</a></li>
+      <li><a href="#permission-list">⑫ 権限管理を行う</a></li>
+    </ul>
+  </nav>
+
+  <section class="guide-section" id="join-request">
+    <h2>① 参加申請をする</h2>
+    <p>
+      既にある団体に参加したい場合は、トップ画面の「参加申請」から申請します。<br>
+      参加したい団体を選び、氏名・連絡先・希望内容などを入力して送信してください。<br>
+      申請後、団体の管理者が内容を確認し、承認されると団体ページを利用できるようになります。
+    </p>
+    <div class="guide-note">
+      団体を新しく作る場合は「団体申請」、既存の団体に参加する場合は「参加申請」を使います。
+    </div>
+    <div class="guide-image">
+      <img src="assets/guide/portal-join-request.png" alt="参加申請画面">
+    </div>
+  </section>
+
+  <section class="guide-section" id="login">
+    <h2>② ログインする</h2>
+    <p>
+      承認後、メールアドレスとパスワードを入力してログインします。<br>
+      パスワードが見えにくい場合は「表示」ボタンを押すと、入力内容を確認できます。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-login.png" alt="ログイン画面">
+    </div>
+  </section>
+
+  <section class="guide-section" id="home">
+    <h2>③ ホーム画面を見る</h2>
+    <p>
+      ホーム画面では、掲示板のお知らせとカレンダーから今後の予定を確認できます。<br>
+      「前月」「翌月」でカレンダーを切り替えられます。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-home.png" alt="ホーム画面">
+    </div>
+  </section>
+
+  <section class="guide-section" id="mypage">
+    <h2>④ マイページを確認する</h2>
+    <p>
+      マイページでは、パスワード変更、プロフィール編集、練習の出欠登録状況を確認できます。<br>
+      団体によっては、会費情報やサポーター情報もここに表示されます。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-mypage.png" alt="マイページ">
+    </div>
+  </section>
+
+  <section class="guide-section" id="practice-list">
+    <h2>⑤ 練習予定を確認する</h2>
+    <p>
+      練習予定一覧では、今後の予定・過去の予定を確認できます。<br>
+      日付、時間、場所、曲目を確認し、出欠登録は「登録/変更」から行います。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-practice-list.png" alt="練習予定一覧">
+    </div>
+  </section>
+
+  <section class="guide-section" id="attendance-edit">
+    <h2>⑥ 出欠を登録する</h2>
+    <p>
+      練習予定ごとに「出席・欠席・未定」を選択して保存します。<br>
+      登録後は一覧画面に反映されます。あとから変更することもできます。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-attendance-edit.png" alt="出欠登録">
+    </div>
+  </section>
+
+  <section class="guide-section" id="score-list">
+    <h2>⑦ 楽譜を確認・検索する</h2>
+    <p>
+      楽譜一覧では、タイトルやパート名で検索できます。<br>
+      一般メンバーはPDFをダウンロードできます。楽譜アップロード・編集・削除は編集権限が必要です。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-score-list.png" alt="楽譜一覧">
+    </div>
+  </section>
+
+  <section class="guide-section" id="account-create">
+    <h2>⑧ 団体申請用のアカウントを作る</h2>
+    <p>
+      新しく団体を作る場合は、先にアカウント作成が必要です。<br>
+      トップ画面の「団体申請」をクリックすると、アカウント未作成の場合はこの画面が表示されます。<br>
+      氏名・メールアドレス・パスワードを入力して、アカウントを作成してください。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-account-create.png" alt="アカウント作成画面">
+    </div>
+  </section>
+
+  <section class="guide-section" id="organization-create">
+    <h2>⑨ 団体を作る</h2>
+    <p>
+      アカウント作成後、団体作成画面が表示されます。<br>
+      団体名・団体URL名を入力し、必要に応じて公開設定を選択して「作成する」を押します。<br>
+      団体を作成した人は、自動的にオーナー権限を持つ管理者になります。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-organization-create.png" alt="団体作成画面">
+    </div>
+  </section>
+
+  <section class="guide-section" id="practice-add">
+    <h2>⑩ 練習予定を追加する</h2>
+    <p>
+      練習予定の追加は、権限を持つ管理者・編集者が行えます。<br>
+      日付・時間・場所・曲目を入力して練習予定を登録します。曲目は楽譜一覧から選ぶことも、自由入力することも可能です。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-practice-add.png" alt="練習予定追加">
+    </div>
+  </section>
+
+  <section class="guide-section" id="score-upload">
+    <h2>⑪ 楽譜をアップロードする</h2>
+    <p>
+      楽譜アップロードは、権限を持つ管理者・編集者が行えます。<br>
+      曲名を登録し、各パート譜のPDFをアップロードします。パート名や表示順を設定することで、見やすく整理できます。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-score-upload.png" alt="楽譜アップロード">
+    </div>
+  </section>
+
+  <section class="guide-section" id="permission-list">
+    <h2>⑫ 権限管理を行う</h2>
+    <p>
+      オーナー相当の権限を持つ人は、管理（申請・権限）画面にアクセスできます。<br>
+      入会希望者の確認、承認、各メンバーへの機能付与をここで行います。<br>
+      各種機能は、オーナーまたはアドミン権限を持つ人が付与した場合に編集できるようになります。
+    </p>
+    <div class="guide-image">
+      <img src="assets/guide/portal-permission-list.png" alt="権限管理">
+    </div>
+    <div class="guide-note">
+      例：楽譜アップロード、練習予定の追加、掲示板編集などは、権限が付与されているメンバーのみ利用できます。
+    </div>
+    <div class="guide-back-top">
+      <a href="#top">▲ 目次へ戻る</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
