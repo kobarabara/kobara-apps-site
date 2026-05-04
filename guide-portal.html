@@ -154,24 +154,21 @@
         padding: 28px;
         box-shadow: 0 8px 24px rgba(0,0,0,0.04);
       ">
-      <h1 style="margin-bottom: 12px; font-size: 1.4rem;">🎻 Ensemble Portal 使い方ガイド</h1>
-      <p style="margin-bottom: 18px; line-height: 1.8;">
-        実際のアプリを開いて、練習予定・出欠確認・楽譜共有をすぐに利用できます。<br>
-        団体に参加している方はこちらからログインしてください。
-      </p>
+      <h1 style="margin-bottom: 12px; font-size: 1.4rem;">🎻 Ensemble Portal 使い方ガイド
       <a class="btn btn-primary" href="https://kobara-music-2025-15e0c3a5ff94.herokuapp.com/" target="_blank" rel="noopener">
         Ensemble Portalを開く
       </a>
     </div>
   </section>
 
-  <nav class="guide-toc" aria-label="目次">
+  <nav class="guide-toc" id="toc" aria-label="目次">
     <h2>目次</h2>
 
     <h3>まず使い始める方</h3>
     <ul class="guide-toc-list">
       <li><a href="#join-request">① 参加申請をする</a></li>
       <li><a href="#login">② ログインする</a></li>
+      <li><a href="#mail-safe">⑬ メールが迷惑メールに入らないようにする</a></li>
     </ul>
 
     <h3>メンバー向けの使い方</h3>
@@ -210,6 +207,9 @@
     <div class="guide-image">
       <img src="assets/guide/portal-join-request.png" alt="参加申請画面">
     </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
+    </div>
   </section>
 
   <section class="guide-section" id="login">
@@ -220,6 +220,9 @@
     </p>
     <div class="guide-image">
       <img src="assets/guide/portal-login.png" alt="ログイン画面">
+    </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
     </div>
   </section>
 
@@ -232,6 +235,9 @@
     <div class="guide-image">
       <img src="assets/guide/portal-home.png" alt="ホーム画面">
     </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
+    </div>
   </section>
 
   <section class="guide-section" id="mypage">
@@ -242,6 +248,9 @@
     </p>
     <div class="guide-image">
       <img src="assets/guide/portal-mypage.png" alt="マイページ">
+    </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
     </div>
   </section>
 
@@ -254,6 +263,9 @@
     <div class="guide-image">
       <img src="assets/guide/portal-practice-list.png" alt="練習予定一覧">
     </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
+    </div>
   </section>
 
   <section class="guide-section" id="attendance-edit">
@@ -265,6 +277,9 @@
     <div class="guide-image">
       <img src="assets/guide/portal-attendance-edit.png" alt="出欠登録">
     </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
+    </div>
   </section>
 
   <section class="guide-section" id="score-list">
@@ -275,6 +290,9 @@
     </p>
     <div class="guide-image">
       <img src="assets/guide/portal-score-list.png" alt="楽譜一覧">
+    </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
     </div>
   </section>
 
@@ -288,6 +306,9 @@
     <div class="guide-image">
       <img src="assets/guide/portal-account-create.png" alt="アカウント作成画面">
     </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
+    </div>
   </section>
 
   <section class="guide-section" id="organization-create">
@@ -300,6 +321,9 @@
     <div class="guide-image">
       <img src="assets/guide/portal-organization-create.png" alt="団体作成画面">
     </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
+    </div>
   </section>
 
   <section class="guide-section" id="practice-add">
@@ -311,6 +335,9 @@
     <div class="guide-image">
       <img src="assets/guide/portal-practice-add.png" alt="練習予定追加">
     </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
+    </div>
   </section>
 
   <section class="guide-section" id="score-upload">
@@ -321,6 +348,9 @@
     </p>
     <div class="guide-image">
       <img src="assets/guide/portal-score-upload.png" alt="楽譜アップロード">
+    </div>
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
     </div>
   </section>
 
@@ -339,6 +369,93 @@
     </div>
     <div class="guide-back-top">
       <a href="#top">▲ 目次へ戻る</a>
+    </div>
+  </section>
+
+  <section class="guide-section" id="mail-safe">
+    <h2>⑬ メールが届かない場合の対処（重要）</h2>
+
+    <p>
+      Ensemble Portalからのメール（承認・案内など）が届かない場合、「迷惑メール」として自動的に振り分けられている可能性があります。
+    </p>
+
+    <div class="guide-note">
+      まず最初に「迷惑メールフォルダ」を確認してください。
+    </div>
+
+    <!-- iPhone -->
+    <h3>📱 iPhoneをご利用の方</h3>
+    <p>
+      メールアプリを開き、「迷惑メール」フォルダを確認してください。<br>
+      対象のメールを開き、「迷惑メールではない」と設定すると、次回から届きやすくなります。
+    </p>
+
+    <ul>
+      <li>メールを開く</li>
+      <li>「迷惑メールではない」を選択</li>
+      <li>送信元メールアドレスを連絡先に登録（おすすめ）</li>
+    </ul>
+
+    <!-- docomo au softbank -->
+    <h3>📱 docomo / au / SoftBank のメールをご利用の方</h3>
+    <p>
+      これらのメールは初期設定でブロックされることがあります。<br>
+      「受信許可設定」を行ってください。
+    </p>
+
+    <ul>
+      <li>「受信リスト設定」または「許可リスト」を開く</li>
+      <li>本サービスのメールアドレス（またはドメイン）を追加する</li>
+    </ul>
+
+    <div class="guide-note">
+      「URL付きメール拒否」がONになっていると、メールが届かないことがあります。
+    </div>
+
+    <!-- Outlook -->
+    <h3>💻 パソコン（Outlook / Hotmail）をご利用の方</h3>
+    <p>
+      迷惑メールフォルダに入っている場合があります。<br>
+      メールを開いて「迷惑メールではない」を選択してください。
+    </p>
+
+    <ul>
+      <li>迷惑メールフォルダを開く</li>
+      <li>対象メールを選択</li>
+      <li>「迷惑メールではない」をクリック</li>
+      <li>「信頼できる差出人」に追加（推奨）</li>
+    </ul>
+
+    <!-- Gmail -->
+    <h3>📧 Gmailをご利用の方</h3>
+    <p>
+      Gmailでは迷惑メールフォルダに入る場合があります。<br>
+      メールを開いて「迷惑メールではない」を選択してください。
+    </p>
+
+    <ul>
+      <li>迷惑メールフォルダを開く</li>
+      <li>対象メールを開く</li>
+      <li>「迷惑メールではない」をクリック</li>
+    </ul>
+
+    <div class="guide-note">
+      GmailやYahooメールなどのフリーメールは、比較的メールが届きやすくおすすめです。
+    </div>
+
+    <!-- 公式リンク -->
+    <h3>参考：各社の公式サポートページ</h3>
+    <ul>
+      <li><a href="https://support.apple.com/ja-jp/HT204137" target="_blank" rel="noopener">Apple（iPhone）公式サポート</a></li>
+      <li><a href="https://www.nttdocomo.co.jp/info/spam_mail/" target="_blank" rel="noopener">docomo 迷惑メール対策</a></li>
+      <li><a href="https://www.au.com/support/service/mobile/trouble/mail/" target="_blank" rel="noopener">au メール設定</a></li>
+      <li><a href="https://www.softbank.jp/mobile/support/mail/" target="_blank" rel="noopener">SoftBank メール設定</a></li>
+      <li><a href="https://support.microsoft.com/ja-jp/outlook" target="_blank" rel="noopener">Outlook サポート</a></li>
+      <li><a href="https://support.google.com/mail/?hl=ja" target="_blank" rel="noopener">Gmail ヘルプ</a></li>
+    </ul>
+
+    <div class="guide-back-top">
+      <a href="#toc">▲ 目次へ戻る</a>
     </div>
   </section>
 
