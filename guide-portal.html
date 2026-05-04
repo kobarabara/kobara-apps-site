@@ -138,6 +138,83 @@
         padding: 24px 18px;
       }
     }
+
+    /* 上部カード専用 */
+    .guide-hero-card {
+      margin-top: 28px;
+      border: 1px solid #e7dccb;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fcfaf6 0%, #f3eadc 100%);
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    /* タイトル */
+    .guide-hero-card h1 {
+      margin: 0 0 20px;
+      font-size: 1.6rem;
+      color: #1d3557;
+    }
+
+    /* ボタンの余白（重要） */
+    .guide-hero-card .btn {
+      display: inline-block;
+      margin-top: 8px;
+    }
+    /* ヒーローカード */
+    .guide-hero-card {
+      margin-top: 28px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #f7f2e9 0%, #efe6d6 100%);
+      padding: 40px 42px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtleアクセント（超重要：一気におしゃれになる） */
+    .guide-hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+    }
+
+    /* コンテンツ */
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* タイトル */
+    .hero-content h1 {
+      font-size: 2rem;
+      margin: 0 0 12px;
+      color: #1d3557;
+      font-weight: 700;
+    }
+
+    /* サブコピー */
+    .hero-sub {
+      margin: 0 0 24px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #5a6573;
+    }
+
+    /* ボタン */
+    .hero-btn {
+      font-size: 1rem;
+      padding: 12px 22px;
+      border-radius: 999px;
+    }
+    .hero-content h1 {
+      letter-spacing: 0.03em;
+    }
   </style>
 </head>
 
@@ -145,19 +222,19 @@
 <div class="guide-wrap">
 
   <section class="guide-hero" id="top">
-      <div class="guide-note" style="
-        margin-top: 28px;
-        border-left: none;
-        border: 1px solid #e7dccb;
-        border-radius: 20px;
-        background: #fcfaf6;
-        padding: 28px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      ">
-      <h1 style="margin-bottom: 12px; font-size: 1.4rem;">🎻 Ensemble Portal 使い方ガイド
-      <a class="btn btn-primary" href="https://kobara-music-2025-15e0c3a5ff94.herokuapp.com/" target="_blank" rel="noopener">
-        Ensemble Portalを開く
-      </a>
+    <div class="guide-hero-card">
+      <div class="hero-content">
+        <h1>🎻 Ensemble Portal</h1>
+        <p class="hero-sub">
+          練習予定・出欠・楽譜管理を使い始めるためのガイド
+        </p>
+
+        <a class="btn btn-primary hero-btn"
+           href="https://kobara-music-2025-15e0c3a5ff94.herokuapp.com/"
+           target="_blank" rel="noopener">
+          アプリを開く
+        </a>
+      </div>
     </div>
   </section>
 
