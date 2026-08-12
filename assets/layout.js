@@ -36,6 +36,8 @@
           <div class="footer-links">
             <a href="terms.html">利用規約</a>
             <a href="privacy.html">プライバシーポリシー</a>
+            <a href="tokushoho.html">特定商取引法に基づく表記</a>
+            <a href="contact.html">お問い合わせ</a>
           </div>
           <div>© Kobara Apps</div>
         </div>
