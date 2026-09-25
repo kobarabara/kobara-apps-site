@@ -3,539 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ensemble Portal 使い方ガイド</title>
+  <title>Ensemble Portal 使い方ガイド｜団体作成から日々の運営まで</title>
+  <meta name="description" content="Ensemble Portalを初めて使う音楽団体向けの使い方ガイドです。団体作成、団員招待、練習予定・出欠、楽譜、アンケート、動画、イベント調整、公開ページの使い方を順番に紹介します。">
+  <link rel="canonical" href="https://apps.kobaracreative.com/guide-portal.html">
   <link rel="stylesheet" href="assets/site.css">
-
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .guide-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
-
-    .guide-hero {
-      margin-bottom: 48px;
-    }
-
-    .guide-hero h1 {
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-
-    .guide-hero p {
-      line-height: 1.9;
-      font-size: 1.05rem;
-    }
-
-    .guide-toc {
-      margin: 0 0 48px;
-      background: #fff;
-      border: 1px solid #e5ddd1;
-      border-radius: 20px;
-      padding: 28px 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    }
-
-    .guide-toc h2 {
-      font-size: 1.35rem;
-      margin-bottom: 18px;
-    }
-
-    .guide-toc h3 {
-      margin-top: 24px;
-      margin-bottom: 12px;
-      font-size: 1.08rem;
-    }
-
-    .guide-toc-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px 18px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .guide-toc-list a {
-      display: block;
-      padding: 12px 14px;
-      border: 1px solid #e5ddd1;
-      border-radius: 999px;
-      background: #faf7f1;
-      color: inherit;
-      text-decoration: none;
-      font-weight: 700;
-      line-height: 1.5;
-    }
-
-    .guide-toc-list a:hover {
-      background: #f2eadc;
-    }
-
-    .guide-section {
-      scroll-margin-top: 24px;
-      margin-bottom: 72px;
-      background: #fff;
-      border: 1px solid #e5ddd1;
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    }
-
-    .guide-section h2 {
-      font-size: 1.6rem;
-      margin-bottom: 16px;
-    }
-
-    .guide-section p {
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
-
-    .guide-image {
-      margin: 24px 0;
-      text-align: center;
-    }
-
-    .guide-image img {
-      width: 100%;
-      max-width: 1000px;
-      border-radius: 16px;
-      border: 1px solid #ddd;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
-
-    .guide-note {
-      background: #faf7f1;
-      border-left: 4px solid #b89b5e;
-      padding: 18px 20px;
-      border-radius: 10px;
-      line-height: 1.8;
-      margin-top: 20px;
-    }
-
-    .guide-back-top {
-      text-align: right;
-      margin-top: 24px;
-    }
-
-    .guide-back-top a {
-      color: inherit;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    @media (max-width: 720px) {
-      .guide-toc-list {
-        grid-template-columns: 1fr;
-      }
-
-      .guide-section {
-        padding: 24px 18px;
-      }
-    }
-
-    /* 上部カード専用 */
-    .guide-hero-card {
-      margin-top: 28px;
-      border: 1px solid #e7dccb;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #fcfaf6 0%, #f3eadc 100%);
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    }
-
-    /* タイトル */
-    .guide-hero-card h1 {
-      margin: 0 0 20px;
-      font-size: 1.6rem;
-      color: #1d3557;
-    }
-
-    /* ボタンの余白（重要） */
-    .guide-hero-card .btn {
-      display: inline-block;
-      margin-top: 8px;
-    }
-    /* ヒーローカード */
-    .guide-hero-card {
-      margin-top: 28px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #f7f2e9 0%, #efe6d6 100%);
-      padding: 40px 42px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* subtleアクセント（超重要：一気におしゃれになる） */
-    .guide-hero-card::after {
-      content: "";
-      position: absolute;
-      right: -80px;
-      top: -80px;
-      width: 260px;
-      height: 260px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
-    }
-
-    /* コンテンツ */
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* タイトル */
-    .hero-content h1 {
-      font-size: 2rem;
-      margin: 0 0 12px;
-      color: #1d3557;
-      font-weight: 700;
-    }
-
-    /* サブコピー */
-    .hero-sub {
-      margin: 0 0 24px;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #5a6573;
-    }
-
-    /* ボタン */
-    .hero-btn {
-      font-size: 1rem;
-      padding: 12px 22px;
-      border-radius: 999px;
-    }
-    .hero-content h1 {
-      letter-spacing: 0.03em;
-    }
+    html { scroll-behavior: smooth; }
+    .guide-wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+    .guide-hero { padding: 42px; border: 1px solid #e4d8c6; border-radius: 24px; background: linear-gradient(135deg, #fffdf9, #f3eadc); box-shadow: 0 12px 30px rgba(30,40,60,.07); }
+    .guide-hero h1 { margin: 8px 0 14px; color: #14213d; font-size: clamp(1.8rem,4vw,2.55rem); line-height: 1.35; }
+    .guide-hero p { margin: 0; line-height: 1.9; }
+    .guide-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .guide-actions .btn { display: inline-flex; min-height: 46px; padding: 0 18px; align-items: center; justify-content: center; border: 1px solid #263f68; border-radius: 999px; color: #263f68; background: #fff; font-weight: 700; text-decoration: none; }
+    .guide-actions .btn-primary { color: #fff; background: #263f68; }
+    .guide-actions .btn-primary:hover { background: #14213d; border-color: #14213d; }
+    .guide-actions .btn-secondary:hover { background: #f6eddf; }
+    .guide-section { scroll-margin-top: 24px; margin-top: 38px; padding: 34px; border: 1px solid #e8dfd3; border-radius: 20px; background: #fff; box-shadow: 0 8px 22px rgba(30,40,60,.045); }
+    .guide-section h2 { margin: 0 0 12px; color: #14213d; font-size: 1.55rem; }
+    .guide-section h3 { margin: 28px 0 10px; color: #263f68; font-size: 1.15rem; }
+    .guide-section p, .guide-section li { line-height: 1.85; }
+    .guide-section p { margin: 0 0 14px; }
+    .guide-label { display: inline-block; color: #52657f; font-size: .83rem; font-weight: 800; letter-spacing: .08em; }
+    .guide-toc, .guide-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: 20px; }
+    .guide-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .guide-toc a, .guide-card { display: block; padding: 18px; border: 1px solid #dfd4c3; border-radius: 14px; color: #14213d; background: #fdfaf5; line-height: 1.6; }
+    .guide-toc a { font-weight: 700; text-decoration: none; }
+    .guide-toc a:hover { background: #f6eddf; }
+    .guide-toc small { display: block; margin-top: 5px; color: #60708a; font-size: .82rem; font-weight: 400; }
+    .guide-card h3 { margin: 0 0 7px; font-size: 1.05rem; }
+    .guide-card p { margin: 0; font-size: .96rem; }
+    .guide-note { margin-top: 20px; padding: 17px 19px; border-left: 4px solid #b88940; border-radius: 10px; background: #fbf6ed; line-height: 1.8; }
+    .guide-warning { border-left-color: #a9514c; background: #fff6f4; }
+    .step-list { counter-reset: step; margin: 16px 0 0; padding: 0; list-style: none; }
+    .step-list li { position: relative; min-height: 38px; padding: 0 0 17px 52px; }
+    .step-list li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: #fff; background: #23395d; font-weight: 800; }
+    .step-list li:not(:last-child)::after { content: ""; position: absolute; top: 34px; bottom: 0; left: 14px; width: 2px; background: #d9e0e9; }
+    details { margin-top: 14px; border: 1px solid #e5ddd2; border-radius: 12px; background: #fff; }
+    summary { padding: 15px 17px; cursor: pointer; color: #263f68; font-weight: 700; }
+    details > div { padding: 0 17px 17px; line-height: 1.8; }
+    .guide-back { margin-top: 25px; text-align: right; }
+    .guide-back a { color: #263f68; font-weight: 700; }
+    @media (max-width:760px) { .guide-wrap{padding:20px 14px 56px}.guide-hero,.guide-section{padding:24px 19px;border-radius:17px}.guide-toc,.guide-grid{grid-template-columns:1fr}.guide-actions .btn{width:100%;text-align:center} }
   </style>
 </head>
+<body data-page="guide-portal.html">
+  <div class="site-shell">
+    <div id="site-header"></div>
+    <main class="site-main"><div class="guide-wrap">
+      <section class="guide-hero" id="top">
+        <span class="guide-label">ENSEMBLE PORTAL GUIDE</span>
+        <h1>オーケストラ・アンサンブルの団体運営アプリ「Ensemble Portal」使い方ガイド</h1>
+        <p>Ensemble Portalは、音楽団体の公開ページと、団員向けの連絡・予定・楽譜・動画をひとつにまとめるサービスです。このガイドでは、団体を作る方と参加する方が、最初に何をすればよいかを順番に説明します。</p>
+        <div class="guide-actions">
+          <a class="btn btn-primary" href="https://kobara-music-2025-15e0c3a5ff94.herokuapp.com/members/organizations/create/">団体を作る</a>
+          <a class="btn btn-secondary" href="https://kobara-music-2025-15e0c3a5ff94.herokuapp.com/">Ensemble Portalを開く</a>
+        </div>
+      </section>
 
-<body>
-<div class="guide-wrap">
+      <section class="guide-section">
+        <span class="guide-label">START HERE</span>
+        <h2>あなたはどちらですか？</h2>
+        <div class="guide-grid">
+          <article class="guide-card"><h3>団体を新しく作る方</h3><p>団体ページを作り、公開情報や団員向けの情報を必要なところから整えます。まずは「団体を作る方」の流れをご覧ください。</p></article>
+          <article class="guide-card"><h3>既存の団体へ参加する方</h3><p>公開団体ページの参加申請、または団体管理者から届く招待を使って参加します。「団員として参加する方」からご覧ください。</p></article>
+        </div>
+        <h3>目次</h3>
+        <nav class="guide-toc" aria-label="使い方ガイドの目次">
+          <a href="#overview">1. できること<small>公開ページと団員ページの役割</small></a>
+          <a href="#create-org">2. 団体を作る方<small>最初の30分で行うこと</small></a>
+          <a href="#join">3. 団員として参加する方<small>申請・招待・ログイン</small></a>
+          <a href="#daily">4. 日々の活動を管理する<small>予定・出欠・お知らせ</small></a>
+          <a href="#scores">5. 楽譜を管理する<small>曲名・パート譜の登録</small></a>
+          <a href="#surveys">6. アンケートを作る<small>設問・対象・公開</small></a>
+          <a href="#video">7. 動画を整理する<small>団員向け・公開HP向けの使い分け</small></a>
+          <a href="#events">8. イベントを調整する<small>候補日・会場・確定まで</small></a>
+          <a href="#public">9. 公開ページを整える<small>紹介・参加申請・情報公開</small></a>
+          <a href="#management">10. 団体を安全に運営する<small>招待・権限・困ったとき</small></a>
+        </nav>
+      </section>
 
-  <section class="guide-hero" id="top">
-    <div class="guide-hero-card">
-      <div class="hero-content">
-        <h1>🎻 Ensemble Portal</h1>
-        <p class="hero-sub">
-          練習予定・出欠・楽譜管理を使い始めるためのガイド
-        </p>
+      <section class="guide-section" id="overview">
+        <span class="guide-label">OVERVIEW</span><h2>1. Ensemble Portalでできること</h2>
+        <p>情報をすべて公開する必要はありません。外部の方に見せる情報と、団員だけに見せる情報を分けて管理できます。</p>
+        <div class="guide-grid">
+          <article class="guide-card"><h3>公開団体ページ</h3><p>団体紹介、募集情報、公開したい動画などを掲載し、参加希望者の窓口にできます。</p></article>
+          <article class="guide-card"><h3>団員向けポータル</h3><p>お知らせ、練習予定、出欠、楽譜、動画、イベント調整を、ログインした団員だけに共有できます。</p></article>
+          <article class="guide-card"><h3>活動の準備</h3><p>練習日程と場所を整理し、出欠を集め、必要な楽譜や連絡を同じ場所に置けます。</p></article>
+          <article class="guide-card"><h3>演奏会・行事の調整</h3><p>候補日と会場候補を比較し、決まった日時と場所を団員へ共有できます。</p></article>
+        </div>
+        <div class="guide-note">はじめから全機能を使う必要はありません。まずは「団体紹介」「団員招待」「最初の練習予定」の3つだけで始められます。</div>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-        <a class="btn btn-primary hero-btn"
-           href="https://kobara-music-2025-15e0c3a5ff94.herokuapp.com/"
-           target="_blank" rel="noopener">
-          アプリを開く
-        </a>
-      </div>
-    </div>
-  </section>
+      <section class="guide-section" id="create-org">
+        <span class="guide-label">FOR ORGANIZERS</span><h2>2. 団体を作る方：最初の30分</h2>
+        <p>団体を作る方は、最初に運営者アカウントでログインします。アカウントがない場合は、団体作成の途中で新規登録へ進めます。</p>
+        <ol class="step-list">
+          <li><strong>団体名を決めて、団体を作成します。</strong><br>まずは普段使っている正式名称で登録してください。</li>
+          <li><strong>公開ページの基本情報を入力します。</strong><br>団体の紹介文、募集状況、練習場所・頻度など、初めて知る人が判断する情報から整えます。</li>
+          <li><strong>最初の練習予定を登録します。</strong><br>日時、場所、必要なら曲目を入力します。ここで団員が出欠登録できるようになります。</li>
+          <li><strong>団員を招待します。</strong><br>最初は役員・パートリーダーから招待すると進めやすくなります。</li>
+        </ol>
+        <details><summary>最初に公開しなくても大丈夫ですか？</summary><div>大丈夫です。公開ページの掲載・参加申請の受付は、団体の準備が整ってから始められます。団員向けの運営を先に始めることもできます。</div></details>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-  <nav class="guide-toc" id="toc" aria-label="目次">
-    <h2>目次</h2>
+      <section class="guide-section" id="join">
+        <span class="guide-label">FOR MEMBERS</span><h2>3. 団員として参加する方</h2>
+        <p>団体への参加方法は、団体の運用により異なります。案内された方法を使ってください。</p>
+        <h3>公開ページから参加申請する場合</h3>
+        <ol class="step-list"><li><strong>参加したい団体の公開ページを開きます。</strong></li><li><strong>参加申請の案内から、必要事項を入力して送信します。</strong></li><li><strong>団体側の確認・承認後、案内に沿ってアカウント登録またはログインします。</strong></li></ol>
+        <h3>団体から招待された場合</h3>
+        <p>団体管理者から届いた案内に従ってください。すでに別の団体でEnsemble Portalを使っている場合でも、確認を経てから新しい団体に参加します。</p>
+        <div class="guide-note guide-warning">参加できない、または「すでに登録されています」と表示される場合は、新しいアカウントを作り直さず、団体管理者へ状況を連絡してください。</div>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-    <h3>まず使い始める方</h3>
-    <ul class="guide-toc-list">
-      <li><a href="#join-request">① 参加申請をする</a></li>
-      <li><a href="#login">② ログインする</a></li>
-      <li><a href="#mail-safe">⑬ メールが迷惑メールに入らないようにする</a></li>
-    </ul>
+      <section class="guide-section" id="daily">
+        <span class="guide-label">DAILY ACTIVITY</span><h2>4. 日々の活動を管理する</h2>
+        <h3>お知らせ</h3><p>後から見返す必要がある決定事項・変更・資料案内を掲載します。</p>
+        <h3>練習予定を追加する</h3><p>練習予定を編集できる権限を持つ方が、団員へ日時・場所・曲目を共有するための手順です。</p>
+        <ol class="step-list"><li><strong>メニューから「練習予定」を開きます。</strong><br>一覧の右上にある「＋ 練習予定を追加」を選びます。</li><li><strong>日付・開始時刻・終了時刻・場所を入力します。</strong><br>登録済みの会場がある場合は選択できます。会場を選ばない場合は、場所名を直接入力します。</li><li><strong>必要な楽譜を選びます。</strong><br>一覧から曲を選ぶか、未登録の曲は補足欄に曲名や編成を入力します。</li><li><strong>「追加」を押します。</strong><br>一覧に戻り、日時・場所・選択した曲が正しいか確認します。</li></ol>
+        <h3>出欠を登録・変更する</h3><p>団員は練習予定の詳細から出欠を登録します。予定が変わった場合は、同じ画面で内容を更新してください。</p>
+        <h3>練習場所を繰り返し使う場合</h3><p>よく使う会場は「会場を管理」で登録しておくと、次回から選択するだけで名称・住所を使えます。部屋名や集合場所だけを変えたい場合は、練習予定の場所欄に補足します。</p>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-    <h3>メンバー向けの使い方</h3>
-    <ul class="guide-toc-list">
-      <li><a href="#home">③ ホーム画面を見る</a></li>
-      <li><a href="#mypage">④ マイページを確認する</a></li>
-      <li><a href="#practice-list">⑤ 練習予定を確認する</a></li>
-      <li><a href="#attendance-edit">⑥ 出欠を登録する</a></li>
-      <li><a href="#score-list">⑦ 楽譜を確認・検索する</a></li>
-    </ul>
+      <section class="guide-section" id="scores">
+        <span class="guide-label">SCORES</span><h2>5. 楽譜を管理する</h2>
+        <p>楽譜を編集できる権限を持つ方が、曲名ごとに必要なパート譜を登録する手順です。団員は登録済みのパート譜を一覧から確認・ダウンロードできます。</p>
+        <ol class="step-list"><li><strong>メニューから「楽譜一覧」を開きます。</strong><br>「楽譜アップロード」を選びます。</li><li><strong>曲名を入力します。</strong><br>同じ曲を複数回登録しないよう、登録済みの一覧を先に確認してください。</li><li><strong>パート名とファイルを登録します。</strong><br>必要なパートごとにPDFなどのファイルを選び、表示順を決めます。最初は最大5件までまとめて登録できます。</li><li><strong>「アップロード」を押します。</strong><br>楽譜一覧に戻り、曲名・パート名・ダウンロードできるファイルが正しいか確認します。</li></ol>
+        <div class="guide-note">差し替えや追加をした場合は、必要に応じて「楽譜のアップロード通知」またはお知らせで団員へ知らせてください。不要になったファイルや曲を削除する前には、過去の練習や団内の運用に影響しないか確認してください。</div>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-    <h3>新しく団体を作る方</h3>
-    <ul class="guide-toc-list">
-      <li><a href="#account-create">⑧ 団体申請用のアカウントを作る</a></li>
-      <li><a href="#organization-create">⑨ 団体を作る</a></li>
-    </ul>
+      <section class="guide-section" id="surveys">
+        <span class="guide-label">SURVEYS</span><h2>6. アンケートを作成・公開する</h2>
+        <p>アンケートは、作成者または共同編集者が下書きを作り、質問・回答対象を確認してから公開します。回答対象は、団体全員・ロール・パート・個別指定から選べます。</p>
+        <ol class="step-list"><li><strong>メニューの「その他」から「アンケート」を開きます。</strong><br>「＋ アンケートを作成」を選び、題名・説明・匿名設定・締切などを入力して「下書きを作成して質問を追加」を押します。</li><li><strong>質問を追加します。</strong><br>「＋ 質問を追加」から回答形式を選び、質問文と必要な選択肢を入力します。質問の並び順も確認します。</li><li><strong>「回答画面をプレビュー」で確認します。</strong><br>回答者に見える選択肢や日付入力を試せます。このプレビューで入力しても回答は保存されません。</li><li><strong>「回答対象を設定」で対象者を保存します。</strong><br>対象人数と、誰に依頼するかを確認します。</li><li><strong>「公開してメールを送信」を押します。</strong><br>公開後は質問と回答対象を変更できません。公開前に題名・設問・対象者・締切を確認してください。</li></ol>
+        <div class="guide-note guide-warning">公開済み・受付終了済みのアンケートも削除できますが、質問・回答・集計結果も同時に削除され、元に戻せません。削除する前に必要な結果を確認してください。</div>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-    <h3>管理者・編集者向けの使い方（赤字は管理者・編集者のみ）</h3>
-    <ul class="guide-toc-list">
-      <li><a href="#practice-add">⑩ 練習予定を追加する</a></li>
-      <li><a href="#score-upload">⑪ 楽譜をアップロードする</a></li>
-      <li><a href="#permission-list">⑫ 権限管理を行う</a></li>
-    </ul>
-  </nav>
+      <section class="guide-section" id="video">
+        <span class="guide-label">VIDEOS</span><h2>7. 演奏会・レッスン動画を整理する</h2>
+        <p>動画は、外部サービスにアップロード済みの動画URLを登録して、団体内で見やすく整理するための機能です。</p>
+        <ol class="step-list"><li><strong>動画一覧から動画を追加します。</strong><br>タイトル、説明、動画URLを入力します。</li><li><strong>カテゴリを選びます。</strong><br>「演奏会」「レッスン」など、団体で必要なカテゴリを作っておくと、あとから探しやすくなります。</li><li><strong>表示先を選びます。</strong><br>団員向けだけに表示する動画と、公開団体ページにも掲載する動画を使い分けます。</li></ol>
+        <div class="guide-note">公開ページに掲載する動画は、出演者・撮影者・著作権者との取り決めを確認してから設定してください。</div>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-  <section class="guide-section" id="join-request">
-    <h2>① 参加申請をする</h2>
-    <p>
-      既にある団体に参加したい場合は、トップ画面の「参加申請」から申請します。<br>
-      参加したい団体を選び、氏名・連絡先・希望内容などを入力して送信してください。<br>
-      申請後、団体の管理者が内容を確認し、承認されると団体ページを利用できるようになります。
-    </p>
-    <div class="guide-note">
-      団体を新しく作る場合は「団体申請」、既存の団体に参加する場合は「参加申請」を使います。
-    </div>
-    <div class="guide-image">
-      <img src="assets/guide/portal-join-request.png" alt="参加申請画面">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
+      <section class="guide-section" id="events">
+        <span class="guide-label">EVENT PLANNING</span><h2>8. 演奏会や行事の日程を調整する</h2>
+        <p>演奏会、合宿、打ち上げなど、通常練習とは別に決めたい予定はイベント調整で管理します。</p>
+        <ol class="step-list"><li><strong>イベントを作成します。</strong><br>イベント名と候補日を登録します。時間が未定なら、日付だけで候補を作ることもできます。</li><li><strong>必要に応じて会場候補を追加します。</strong><br>候補日ごとに会場候補や補足を登録し、比較できるようにします。</li><li><strong>団員の回答を確認します。</strong><br>候補日ごとの状況を見て、日程と会場を決めます。</li><li><strong>確定します。</strong><br>確定した日時・会場・住所はイベント一覧で共有されます。</li></ol>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-  <section class="guide-section" id="login">
-    <h2>② ログインする</h2>
-    <p>
-      承認後、メールアドレスとパスワードを入力してログインします。<br>
-      パスワードが見えにくい場合は「表示」ボタンを押すと、入力内容を確認できます。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-login.png" alt="ログイン画面">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
+      <section class="guide-section" id="public">
+        <span class="guide-label">PUBLIC PAGE</span><h2>9. 団体の公開ページを整える</h2>
+        <p>公開ページは、参加希望者や演奏会を知った方が団体を最初に知る場所です。団員しか見る必要がない情報は公開せず、団員ページに置きます。</p>
+        <div class="guide-grid"><article class="guide-card"><h3>掲載するとよい情報</h3><p>団体紹介、活動地域、練習頻度、募集状況、募集しているパート、参加希望者への案内。</p></article><article class="guide-card"><h3>公開を慎重にする情報</h3><p>団員の連絡先、詳細な出欠、限定配布の楽譜、公開許可のない写真・動画、会場の入室方法など。</p></article></div>
+        <h3>参加申請を受け付ける</h3><p>団体が新規参加者を受け入れる場合は、公開ページから参加申請を受け付けられます。募集停止中は、受付を止めた状態にできます。</p>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
 
-  <section class="guide-section" id="home">
-    <h2>③ ホーム画面を見る</h2>
-    <p>
-      ホーム画面では、掲示板のお知らせとカレンダーから今後の予定を確認できます。<br>
-      「前月」「翌月」でカレンダーを切り替えられます。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-home.png" alt="ホーム画面">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="mypage">
-    <h2>④ マイページを確認する</h2>
-    <p>
-      マイページでは、パスワード変更、プロフィール編集、練習の出欠登録状況を確認できます。<br>
-      団体によっては、会費情報やサポーター情報もここに表示されます。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-mypage.png" alt="マイページ">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="practice-list">
-    <h2>⑤ 練習予定を確認する</h2>
-    <p>
-      練習予定一覧では、今後の予定・過去の予定を確認できます。<br>
-      日付、時間、場所、曲目を確認し、出欠登録は「登録/変更」から行います。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-practice-list.png" alt="練習予定一覧">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="attendance-edit">
-    <h2>⑥ 出欠を登録する</h2>
-    <p>
-      練習予定ごとに「出席・欠席・未定」を選択して保存します。<br>
-      登録後は一覧画面に反映されます。あとから変更することもできます。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-attendance-edit.png" alt="出欠登録">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="score-list">
-    <h2>⑦ 楽譜を確認・検索する</h2>
-    <p>
-      楽譜一覧では、タイトルやパート名で検索できます。<br>
-      一般メンバーはPDFをダウンロードできます。楽譜アップロード・編集・削除は編集権限が必要です。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-score-list.png" alt="楽譜一覧">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="account-create">
-    <h2>⑧ 団体申請用のアカウントを作る</h2>
-    <p>
-      新しく団体を作る場合は、先にアカウント作成が必要です。<br>
-      トップ画面の「団体申請」をクリックすると、アカウント未作成の場合はこの画面が表示されます。<br>
-      氏名・メールアドレス・パスワードを入力して、アカウントを作成してください。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-account-create.png" alt="アカウント作成画面">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="organization-create">
-    <h2>⑨ 団体を作る</h2>
-    <p>
-      アカウント作成後、団体作成画面が表示されます。<br>
-      団体名・団体URL名を入力し、必要に応じて公開設定を選択して「作成する」を押します。<br>
-      団体を作成した人は、自動的にオーナー権限を持つ管理者になります。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-organization-create.png" alt="団体作成画面">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="practice-add">
-    <h2>⑩ 練習予定を追加する</h2>
-    <p>
-      練習予定の追加は、権限を持つ管理者・編集者が行えます。<br>
-      日付・時間・場所・曲目を入力して練習予定を登録します。曲目は楽譜一覧から選ぶことも、自由入力することも可能です。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-practice-add.png" alt="練習予定追加">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="score-upload">
-    <h2>⑪ 楽譜をアップロードする</h2>
-    <p>
-      楽譜アップロードは、権限を持つ管理者・編集者が行えます。<br>
-      曲名を登録し、各パート譜のPDFをアップロードします。パート名や表示順を設定することで、見やすく整理できます。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-score-upload.png" alt="楽譜アップロード">
-    </div>
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="permission-list">
-    <h2>⑫ 権限管理を行う</h2>
-    <p>
-      オーナー相当の権限を持つ人は、管理（申請・権限）画面にアクセスできます。<br>
-      入会希望者の確認、承認、各メンバーへの機能付与をここで行います。<br>
-      各種機能は、オーナーまたはアドミン権限を持つ人が付与した場合に編集できるようになります。
-    </p>
-    <div class="guide-image">
-      <img src="assets/guide/portal-permission-list.png" alt="権限管理">
-    </div>
-    <div class="guide-note">
-      例：楽譜アップロード、練習予定の追加、掲示板編集などは、権限が付与されているメンバーのみ利用できます。
-    </div>
-    <div class="guide-back-top">
-      <a href="#top">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-  <section class="guide-section" id="mail-safe">
-    <h2>⑬ メールが届かない場合の対処（重要）</h2>
-
-    <p>
-      Ensemble Portalからのメール（承認・案内など）が届かない場合、「迷惑メール」として自動的に振り分けられている可能性があります。
-    </p>
-
-    <div class="guide-note">
-      まず最初に「迷惑メールフォルダ」を確認してください。
-    </div>
-
-    <!-- iPhone -->
-    <h3>📱 iPhoneをご利用の方</h3>
-    <p>
-      メールアプリを開き、「迷惑メール」フォルダを確認してください。<br>
-      対象のメールを開き、「迷惑メールではない」と設定すると、次回から届きやすくなります。
-    </p>
-
-    <ul>
-      <li>メールを開く</li>
-      <li>「迷惑メールではない」を選択</li>
-      <li>送信元メールアドレスを連絡先に登録（おすすめ）</li>
-    </ul>
-
-    <!-- docomo au softbank -->
-    <h3>📱 docomo / au / SoftBank のメールをご利用の方</h3>
-    <p>
-      これらのメールは初期設定でブロックされることがあります。<br>
-      「受信許可設定」を行ってください。
-    </p>
-
-    <ul>
-      <li>「受信リスト設定」または「許可リスト」を開く</li>
-      <li>本サービスのメールアドレス（またはドメイン）を追加する</li>
-    </ul>
-
-    <div class="guide-note">
-      「URL付きメール拒否」がONになっていると、メールが届かないことがあります。
-    </div>
-
-    <!-- Outlook -->
-    <h3>💻 パソコン（Outlook / Hotmail）をご利用の方</h3>
-    <p>
-      迷惑メールフォルダに入っている場合があります。<br>
-      メールを開いて「迷惑メールではない」を選択してください。
-    </p>
-
-    <ul>
-      <li>迷惑メールフォルダを開く</li>
-      <li>対象メールを選択</li>
-      <li>「迷惑メールではない」をクリック</li>
-      <li>「信頼できる差出人」に追加（推奨）</li>
-    </ul>
-
-    <!-- Gmail -->
-    <h3>📧 Gmailをご利用の方</h3>
-    <p>
-      Gmailでは迷惑メールフォルダに入る場合があります。<br>
-      メールを開いて「迷惑メールではない」を選択してください。
-    </p>
-
-    <ul>
-      <li>迷惑メールフォルダを開く</li>
-      <li>対象メールを開く</li>
-      <li>「迷惑メールではない」をクリック</li>
-    </ul>
-
-    <div class="guide-note">
-      GmailやYahooメールなどのフリーメールは、比較的メールが届きやすくおすすめです。
-    </div>
-
-    <!-- 公式リンク -->
-    <h3>参考：各社の公式サポートページ</h3>
-    <ul>
-      <li><a href="https://support.apple.com/ja-jp/HT204137" target="_blank" rel="noopener">Apple（iPhone）公式サポート</a></li>
-      <li><a href="https://www.nttdocomo.co.jp/info/spam_mail/" target="_blank" rel="noopener">docomo 迷惑メール対策</a></li>
-      <li><a href="https://www.au.com/support/service/mobile/trouble/mail/" target="_blank" rel="noopener">au メール設定</a></li>
-      <li><a href="https://www.softbank.jp/mobile/support/mail/" target="_blank" rel="noopener">SoftBank メール設定</a></li>
-      <li><a href="https://support.microsoft.com/ja-jp/outlook" target="_blank" rel="noopener">Outlook サポート</a></li>
-      <li><a href="https://support.google.com/mail/?hl=ja" target="_blank" rel="noopener">Gmail ヘルプ</a></li>
-    </ul>
-
-    <div class="guide-back-top">
-      <a href="#toc">▲ 目次へ戻る</a>
-    </div>
-  </section>
-
-</div>
+      <section class="guide-section" id="management">
+        <span class="guide-label">SAFE MANAGEMENT</span><h2>10. 団体を安全に運営する</h2>
+        <h3>役割に応じて編集権限を分ける</h3><p>すべての管理を一人で抱え込む必要はありません。運営者は、予定・楽譜・お知らせなどを担当者へ分け、必要な範囲だけ編集できるようにします。</p>
+        <h3>退団・休団時の扱い</h3><p>活動に参加しない方は、団体の運用に合わせて利用状態を見直します。別の団体へ参加する場合も、本人の確認なしに団体へ追加されることはありません。</p>
+        <h3>メールが届かない場合</h3><p>迷惑メールフォルダ、受信拒否設定、登録したメールアドレスを確認してください。解決しない場合は、団体管理者に連絡し、どの画面で何が起きたかを伝えてください。</p>
+        <details><summary>パスワードを忘れた場合</summary><div>ログイン画面のパスワード変更・再設定の案内を利用してください。ログインできない状態で新しいアカウントを作る前に、登録済みメールアドレスで再設定できるか確認します。</div></details>
+        <p class="guide-back"><a href="#top">ページ上部へ戻る</a></p>
+      </section>
+    </div></main>
+    <div id="site-footer"></div>
+  </div>
+  <script src="assets/layout.js"></script>
 </body>
 </html>
